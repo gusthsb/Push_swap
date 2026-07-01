@@ -17,10 +17,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "ftprintf/ft_printf.h"
-# include "Libft/libft.h"
-typedef struct s_list
+/* prototipações no .h e include da library do malloc*/
+typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq é a msm struct, fiquei com preguiça e apaguei a lib então*/
 {
-	void			*content;
+	int				*content; /* mudando tipo void * para int * (so vamos trabalhar com inteiros, então void é desnecessário)*/
+	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros */
 	struct s_list	*next;
 }					t_list;
 
@@ -37,5 +38,3 @@ void	push_a(t_list **lst_b, t_list **lst_a);
 void	push_b(t_list **lst_a, t_list **lst_b);
 
 #endif
-
-/* prototipações no .h e include da library do malloc*/
