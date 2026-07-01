@@ -12,28 +12,31 @@
 
 #include "ft_push_swap.h"
 
-void	push_a(t_list **lst_b, t_list **lst_a)
+void	push_a(t_list **dst_a, t_list **src_b)
 {
-	t_list	*top_b;
+	t_list	*moved;
 
-	if (!lst_b || !*lst_b)
+	if (!src_b || !*src_b)
 		return ;
-		
-	top_b = *lst_b;
-	*lst_b = top_b -> next;
-	top_b -> next = *lst_a;
-	*lst_a = top_b;
+	moved = *src_b;
+	*src_b = moved->next;
+	moved->next = *dst_a;
+	*dst_a = moved;
 }
 
-void	push_b(t_list **lst_a, t_list **lst_b)
+void	push_b(t_list **dst_b, t_list **src_a)
 {
-	t_list	*top_a;
+	t_list	*moved;
 
-	if (!lst_a || !*lst_a)
+	if (!src_a || !*src_a)
 		return ;
-		
-	top_a = *lst_a;
-	*lst_a = top_a -> next;
-	top_a -> next = *lst_b;
-	*lst_b = top_a;
+	moved = *src_a;
+	*src_a = moved->next;
+	moved->next = *dst_b;
+	*dst_b = moved;
 }
+
+/* mudança de nomes de variavel e de parametros - 
+   parametros = lst_a e lst_b para dst_a/b e src_a/b 
+   variaveis  = top_a/b para moved
+*/

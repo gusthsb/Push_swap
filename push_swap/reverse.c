@@ -14,42 +14,43 @@
 
 void	reverse_rotate_a(t_list **lst_a)
 {
-	t_list	*penultimate;
-	t_list	*last;
+	t_list	*new_first;
+	t_list	*old_last;
 
 	if (!lst_a || !(*lst_a) || !(*lst_a) -> next)
 		return ;
-
-	penultimate = *lst_a;
-	last = *lst_a;
-	while (last -> next -> next != NULL)
-		last = last -> next;
-	
-	penultimate = last -> next;
-	last -> next = NULL;
-	penultimate -> next = *lst_a;
-	*lst_a = penultimate;
+	old_last = *lst_a;
+	while (old_last -> next -> next != NULL)
+		old_last = old_last -> next;
+	new_first = old_last->next;
+	old_last -> next = NULL;
+	new_first -> next = *lst_a;
+	*lst_a = new_first;
 }
 
 void	reverse_rotate_b(t_list **lst_b)
 {
-	t_list	*penultimate;
-	t_list	*last;
+	t_list	*new_first;
+	t_list	*old_last;
 
 	if (!lst_b || !(*lst_b) || !(*lst_b) -> next)
 		return ;
-	penultimate = *lst_b;
-	last = *lst_b;
-	while (last -> next -> next != NULL)
-		last = last -> next;
-	penultimate = last -> next;
-	last -> next = NULL;
-	penultimate -> next = *lst_b;
-	*lst_b = penultimate;
+	old_last = *lst_b;
+	while (old_last -> next -> next != NULL)
+		old_last = old_last -> next;
+	new_first = old_last -> next;
+	old_last -> next = NULL;
+	new_first -> next = *lst_b;
+	*lst_b = new_first;
 }
 
-void	rrr(t_list	**lst_a, t_list **lst_b)
+void	rrr(t_list **lst_a, t_list **lst_b)
 {
 	reverse_rotate_a(lst_a);
 	reverse_rotate_b(lst_b);
 }
+
+/* somente mudança de nome de variavel 
+   penultimate -> new_first
+   last -> old_last
+*/

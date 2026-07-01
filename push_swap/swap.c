@@ -17,17 +17,16 @@ void	swap_a(t_list **lst)
 	t_list	*first;
 	t_list	*second;
 
-	if (!lst || !*lst || !(*lst) -> next)
+	if (!lst || !(*lst) || !(*lst) -> next)
 		return ;
 	
 	first = *lst;
 	second = first -> next;
-
 	first -> next = second -> next;
 	second -> next = first;
-
 	*lst = second;
 }
+
 void	swap_b(t_list **lst)
 {
 	t_list	*first;
