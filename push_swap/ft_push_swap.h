@@ -21,7 +21,7 @@
 typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq é a msm struct, fiquei com preguiça e apaguei a lib então*/
 {
 	int				*content; /* mudando tipo void * para int * (so vamos trabalhar com inteiros, então void é desnecessário)*/
-	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros */
+	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros ||| fazendo cada elemento da lista ter seu proprio indice baseado no sort */
 	struct s_list	*next;
 }					t_list;
 
@@ -36,5 +36,6 @@ void	reverse_rotate_b(t_list **lst_b);
 void	rrr(t_list **lst_a, t_list **lst_b);
 void	push_a(t_list **lst_b, t_list **lst_a);
 void	push_b(t_list **lst_a, t_list **lst_b);
+void	set_stack_indexes(t_list *lst_a);
 
 #endif
