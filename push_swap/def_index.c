@@ -45,8 +45,8 @@ static int	find_rank(int *sorted, int size, int value) /*array já ordenado (*so
 			return (i); // retornamos o indice respectivo do valor procurado no array JA ORDENADO
 		i++;
 	}
-	return (-1); /*isso retorna um caso de erro, -1 é convenção pq não é um indice valido
-				   provavelmente vamos fazer um security-guard com esse valor dps*/	
+	return (-1); /*isso retorna um caso de erro, -1 é uma convenção, pois array[-1] não é um indice valido
+				   --- provavelmente vamos fazer um security-guard em outra func com esse valor dps*/	
 }
 
 void	set_stack_indexes(t_list *lst_a)
