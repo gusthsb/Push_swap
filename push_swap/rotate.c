@@ -12,21 +12,28 @@
 
 #include "ft_push_swap.h"
 
+// void	rotate_a(t_list **lst_a)
+// {
+// 	t_list	*first;
+// 	t_list	*last;
+
+// 	if (!lst_a || !(*lst_a) || !(*lst_a) -> next)
+// 		return ;
+	
+// 	first = *lst_a;
+// 	last = *lst_a;
+// 	while (last -> next != NULL)
+// 		last = last -> next;
+// 	*lst_a = first -> next;
+// 	first -> next = NULL;
+// 	last -> next = first;
+// }
+
 void	rotate_a(t_list **lst_a)
 {
-	t_list	*first;
-	t_list	*last;
-
-	if (!lst_a || !(*lst_a) || !(*lst_a) -> next)
+	if(!lst_a || !(*lst_a) || !(*lst_a)->next)
 		return ;
-	
-	first = *lst_a;
-	last = *lst_a;
-	while (last -> next != NULL)
-		last = last -> next;
-	*lst_a = first -> next;
-	first -> next = NULL;
-	last -> next = first;
+	*lst_a = (*lst_a)->next;
 }
 
 void	rotate_b(t_list **lst_b)

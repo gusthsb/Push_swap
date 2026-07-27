@@ -12,6 +12,38 @@
 
 #include "ft_push_swap.h"
 
+static void	unlink_top(t_list **src)
+{
+	t_list	*moved;
+
+	moved = *src;
+	if (moved->next == moved)
+		*src = NULL;
+	else
+	{
+		moved->prev->next = moved->next;
+		moved->next->prev = moved->prev;
+		*src = moved->next;
+	}
+}
+
+static void	insert_top(t_list **dst, t_list *moved)
+{
+	if (!*dst)
+	{
+		moved->next = moved;
+		moved->prev = moved;
+	}
+	else
+	{
+		moved->next = *dst;
+		moved->prev = (*dst)->prev;
+		(*dst)->prev->next = moved;
+		(*dst)->prev = moved;
+	}
+	*dst = moved;
+}
+
 void	push_a(t_list **dst_a, t_list **src_b)
 {
 	t_list	*moved;
@@ -19,9 +51,8 @@ void	push_a(t_list **dst_a, t_list **src_b)
 	if (!src_b || !*src_b)
 		return ;
 	moved = *src_b;
-	*src_b = moved->next;
-	moved->next = *dst_a;
-	*dst_a = moved;
+	unlink_top(src_b);
+	insert_top(dst_a, moved);
 }
 
 void	push_b(t_list **dst_b, t_list **src_a)
@@ -31,12 +62,6 @@ void	push_b(t_list **dst_b, t_list **src_a)
 	if (!src_a || !*src_a)
 		return ;
 	moved = *src_a;
-	*src_a = moved->next;
-	moved->next = *dst_b;
-	*dst_b = moved;
+	unlink_top(src_a);
+	insert_top(dst_b, moved);
 }
-
-/* mudança de nomes de variavel e de parametros - 
-   parametros = lst_a e lst_b para dst_a/b e src_a/b 
-   variaveis  = top_a/b para moved
-*/

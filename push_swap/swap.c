@@ -12,36 +12,58 @@
 
 #include "ft_push_swap.h"
 
-void	swap_a(t_list **lst)
+void	swap_a(t_list **lst_a)
 {
 	t_list	*first;
 	t_list	*second;
+	t_list	*before;
+	t_list	*after;
 
-	if (!lst || !(*lst) || !(*lst) -> next)
+	if (!lst_a || !(*lst_a) || (*lst_a) -> next == *lst_a)
 		return ;
-	
-	first = *lst;
+	first = *lst_a;
 	second = first -> next;
-	first -> next = second -> next;
+	if (second -> next == first)
+	{
+		*lst_a = second;
+		return ;
+	}
+	before = first -> prev;
+	after = second -> next;
+	before -> next = second;
+	second -> prev = before;
 	second -> next = first;
-	*lst = second;
+	first -> prev = second;
+	first -> next = after;
+	after -> prev = first;
+	*lst_a = second;
 }
 
-void	swap_b(t_list **lst)
+void	swap_b(t_list **lst_b)
 {
 	t_list	*first;
 	t_list	*second;
+	t_list	*before;
+	t_list	*after;
 
-	if (!lst || !*lst || !(*lst) -> next)
+	if (!lst_b || !(*lst_b) || (*lst_b) -> next == *lst_b)
 		return ;
-	
-	first = *lst;
+	first = *lst_b;
 	second = first -> next;
-
-	first -> next = second -> next;
+	if (second -> next == first)
+	{
+		*lst_b = second;
+		return ;
+	}
+	before = first -> prev;
+	after = second -> next;
+	before -> next = second;
+	second -> prev = before;
 	second -> next = first;
-
-	*lst = second;
+	first -> prev = second;
+	first -> next = after;
+	after -> prev = first;
+	*lst_b = second;
 }
 
 void swap_both(t_list **lst, t_list **lst2)

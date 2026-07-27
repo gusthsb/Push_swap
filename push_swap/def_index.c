@@ -59,7 +59,7 @@ void	set_stack_indexes(t_list *lst_a)
 	size = lst_size(lst_a); // para pegar o tamanho da lst inteira
 	sorted = malloc(sizeof(int) * size); // mallocando o aux array
 	if (!sorted)
-		return ; // security guard pra falha da mallocaria
+		return ; // security guard pra falha da mallocaria do bagulho
 	current = lst_a; // aponta pra cabeça da lst
 	i = 0;
 	while (current)
