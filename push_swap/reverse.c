@@ -37,19 +37,25 @@ void	reverse_rotate_a(t_list **lst_a)
 
 void	reverse_rotate_b(t_list **lst_b)
 {
-	t_list	*new_first;
-	t_list	*old_last;
-
 	if (!lst_b || !(*lst_b) || !(*lst_b) -> next)
 		return ;
-	old_last = *lst_b;
-	while (old_last -> next -> next != NULL)
-		old_last = old_last -> next;
-	new_first = old_last -> next;
-	old_last -> next = NULL;
-	new_first -> next = *lst_b;
-	*lst_b = new_first;
+	*lst_b = (*lst_b) -> prev;
 }
+// void	reverse_rotate_b(t_list **lst_b)
+// {
+// 	t_list	*new_first;
+// 	t_list	*old_last;
+
+// 	if (!lst_b || !(*lst_b) || !(*lst_b) -> next)
+// 		return ;
+// 	old_last = *lst_b;
+// 	while (old_last -> next -> next != NULL)
+// 		old_last = old_last -> next;
+// 	new_first = old_last -> next;
+// 	old_last -> next = NULL;
+// 	new_first -> next = *lst_b;
+// 	*lst_b = new_first;
+// }
 
 void	rrr(t_list **lst_a, t_list **lst_b)
 {

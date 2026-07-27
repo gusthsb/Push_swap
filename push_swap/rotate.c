@@ -31,27 +31,33 @@
 
 void	rotate_a(t_list **lst_a)
 {
-	if(!lst_a || !(*lst_a) || !(*lst_a)->next)
+	if (!lst_a || !(*lst_a) || !(*lst_a)->next)
 		return ;
 	*lst_a = (*lst_a)->next;
 }
 
 void	rotate_b(t_list **lst_b)
 {
-	t_list	*first;
-	t_list	*last;
-
 	if (!lst_b || !(*lst_b) || !(*lst_b) -> next)
 		return ;
-
-	first = *lst_b;
-	last = *lst_b;
-	while (last -> next != NULL)
-		last = last -> next;
-	*lst_b = first -> next;
-	first -> next = NULL;
-	last -> next = first;
+	*lst_b = (*lst_b) -> next;
 }
+// void	rotate_b(t_list **lst_b)
+// {
+// 	t_list	*first;
+// 	t_list	*last;
+
+// 	if (!lst_b || !(*lst_b) || !(*lst_b) -> next)
+// 		return ;
+
+// 	first = *lst_b;
+// 	last = *lst_b;
+// 	while (last -> next != NULL)
+// 		last = last -> next;
+// 	*lst_b = first -> next;
+// 	first -> next = NULL;
+// 	last -> next = first;
+// }
 
 void	rr(t_list **lst_a, t_list **lst_b)
 {
