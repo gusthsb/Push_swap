@@ -62,8 +62,3 @@ void	rrr(t_list **lst_a, t_list **lst_b)
 	reverse_rotate_a(lst_a);
 	reverse_rotate_b(lst_b);
 }
-
-/* somente mudança de nome de variavel 
-   penultimate -> new_first
-   last -> old_last
-*/
