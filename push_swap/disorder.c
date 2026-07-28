@@ -35,6 +35,11 @@ char *trans(t_list **lst_en)
 	new_lst[i] = '\0';
 	return (new_lst);
 }
+double	ft_treco(char *nw)
+{
+	if (!nw)
+		return (0.0);
+}
 double	calculate_disorder(t_list **lst_a)
 {
 	double	mistakes;
@@ -47,8 +52,7 @@ double	calculate_disorder(t_list **lst_a)
 	total_pairs = 0;
 	i = 0;
 	new_lst = trans(*lst_a);
-	if (!new_lst)
-		return (0.0);
+	ft_treco(new_lst);
 	while (new_lst[i++])
 	{
 		j = i + 1;
