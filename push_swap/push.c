@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:56:53 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/06/30 20:22:04 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/07/28 16:36:25 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	push_a(t_list **dst_a, t_list **src_b)
 {
 	t_list	*moved;
 
-	if (!src_b || !*src_b)
+	if (!src_b || !(*src_b))
 		return ;
 	moved = *src_b;
 	unlink_top(src_b);
@@ -59,7 +59,7 @@ void	push_b(t_list **dst_b, t_list **src_a)
 {
 	t_list	*moved;
 
-	if (!src_a || !*src_a)
+	if (!src_a || !(*src_a))
 		return ;
 	moved = *src_a;
 	unlink_top(src_a);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/06/30 17:10:24 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/07/28 16:34:57 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 /* prototipações no .h e include da library do malloc*/
 typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq é a msm struct, fiquei com preguiça e apaguei a lib então*/
 {
-	int				content;
+	int				content; /* mudando tipo void * para int * (so vamos trabalhar com inteiros, então void é desnecessário)*/
 	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros ||| fazendo cada elemento da lista ter seu proprio indice baseado no sort */
 	struct s_list	*next;
 	struct s_list	*prev;
+	
 }					t_list;
 
 void	swap_a(t_list **lst);
