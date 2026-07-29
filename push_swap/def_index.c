@@ -1,18 +1,5 @@
 #include "ft_push_swap.h"
 
-static int	lst_size(t_list *lst) /*não precisa de ponteiro duplo quando a função só faz a leitura da lst*/
-{								  /* *lst faz uma copia do ENDEREÇO de memoria, content continua sendo o original */
-	int	size;
-
-	size = 0;
-	while (lst)
-	{
-		size++;
-		lst = lst -> next; // Passamos de nó e armazenamos essa operação
-	}
-	return (size); // retornamos o tamanho da lst, baseado na quantidade de vezes que o size recebeu +1;
-}
-
 static void	sort_array(int *array, int size)  //basicamente um insertion sort  -  acredito que ainda vamos precisar implementar outro algoritimo (O(N²))
 {                                            //para trabalhar especificamente com a struct, esse é o sort mais simples que tem e o mais facil pra trabalhar com array
 	int	i; // anda pra frente --- controla loop externo

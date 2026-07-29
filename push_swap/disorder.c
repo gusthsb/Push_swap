@@ -1,77 +1,65 @@
 #include "ft_push_swap.h"
 
-static int	lst_size(t_list *lst) /*não precisa de ponteiro duplo quando a função só faz a leitura da lst*/
-{								  /* *lst faz uma copia do ENDEREÇO de memoria, content continua sendo o original */
-	int	size;
-
-	size = 0;
-	while (lst)
-	{
-		size++;
-		lst = lst -> next; // Passamos de nó e armazenamos essa operação
-	}
-	return (size); // retornamos o tamanho da lst, baseado na quantidade de vezes que o size recebeu +1;
-}
-
-char *trans(t_list **lst_en)
+static int	*trans(t_list **lst_en, int *size) // precisa ser um array de int
 {
-	char	*new_lst;
+	int		*new_lst; // mesma coisa
 	int		i;
-	int		len_lst;
 	t_list	*current;
 
 	if (!(*lst_en) || !lst_en)
 		return (NULL);
-	new_lst = malloc(lst_size(*lst_en) + 1);
+	*size = lst_size(lst_en); 
+	new_lst = malloc(sizeof(int) * (*size));
 	if (!new_lst)
 		return (NULL);
 	i = 0;
 	current = *lst_en;
-	while (current)
+	while (i < *size)
 	{
-		new_lst[i++] = current->content;
-		current = current->next;
+		new_lst[i] = current -> content;
+		current = current -> next;
+		i++;
 	}
-	new_lst[i] = '\0';
 	return (new_lst);
 }
+/*mamatos é burro pq estava fazendo funções como se fosse uma string*/
 
-double	calculate_disorder(char *lst_a)
+double	calculate_disorder(int *lst_a, int size)
 {
 	double	mistakes;
 	double	total_pairs;
 	int		i;
 	int		j;
-	char	*new_lst;
 
 	mistakes = 0;
 	total_pairs = 0;
 	i = 0;
-	while (new_lst[i++])
+	while (i < size)
 	{
 		j = i + 1;
-		while (new_lst[j++])
+		while (j < size)
 		{
-			total_pairs += 1;
-			if (new_lst[i] > new_lst[j])
-				mistakes += 1;
+			total_pairs++;
+			if (lst_a[i] > lst_a[j])
+				mistakes++;
 		}
 	}
-	free(new_lst);
 	if (total_pairs == 0)
 		return (0.0);
 	return (mistakes / total_pairs);	
 }
 
-double main_disorder(t_list **lst)
+double main_disorder(t_list *lst)
 {
-	char	*new_str;
+	int		*new_arr;
 	double	value;
+	int		size;
 
-	new_str = trans(*lst);
-	if (!new_str)
+	new_arr = trans(lst, &size);
+	if (!new_arr)
 		return (0.0);
-	value = calculate_disorder(new_str);
+	value = calculate_disorder(new_arr, lst_size(lst));
+	free(new_arr);
 	return (value);
 }
 

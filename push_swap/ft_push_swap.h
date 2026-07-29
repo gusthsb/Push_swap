@@ -39,5 +39,6 @@ void	rrr(t_list **lst_a, t_list **lst_b);
 void	push_a(t_list **lst_b, t_list **lst_a);
 void	push_b(t_list **lst_a, t_list **lst_b);
 void	set_stack_indexes(t_list *lst_a);
+int		lst_size(t_list *lst);
 
 #endif
