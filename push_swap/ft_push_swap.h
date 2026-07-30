@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/07/28 19:00:04 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:53:42 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq 
 	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros ||| fazendo cada elemento da lista ter seu proprio indice baseado no sort */
 	struct s_list	*next;
 	struct s_list	*prev;
-	
 }					t_list;
 
 # define INT_MAX 2147483647
