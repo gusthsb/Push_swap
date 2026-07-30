@@ -27,6 +27,9 @@ typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq 
 	
 }					t_list;
 
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
 void	swap_a(t_list **lst);
 void	swap_b(t_list **lst);
 void	swap_both(t_list **lst_a, t_list **lst_b);

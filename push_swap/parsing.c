@@ -1,5 +1,5 @@
 #include "ft_push_swap.h"
-
+/* Verificar se o valor está duplicado*/
 int	is_arr_duplicate(t_list *lst_a, int value)
 {
 	t_list	*current;
