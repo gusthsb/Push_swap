@@ -1,6 +1,6 @@
 #include "ft_push_swap.h"
 
-static int	*trans(t_list *lst_en, int *size) // precisa ser um array de int
+static int	*trans(t_list *lst_en, int *size)
 {
 	int		*new_lst; // mesma coisa
 	int		i;
@@ -22,7 +22,6 @@ static int	*trans(t_list *lst_en, int *size) // precisa ser um array de int
 	}
 	return (new_lst);
 }
-/*mamatos é burro pq estava fazendo funções como se fosse uma string*/
 
 double	calculate_disorder(int *lst_a, int size)
 {
@@ -71,6 +70,7 @@ int	main(void)
 	t_list	*node1;
 	t_list	*node2;
 	t_list	*node3;
+	t_list	*node4;
 
 	node1 = malloc(sizeof(t_list));
 	node1 -> content = 4;
@@ -78,10 +78,13 @@ int	main(void)
 	node2 -> content = 1;
 	node3 = malloc(sizeof(t_list));
 	node3 -> content = 3;
+	node4 = malloc(sizeof(t_list));
+	node4 -> content = 2;
 	
 	node1 -> next = node2;
 	node2 -> next = node3;
-	node3 -> next = NULL;
+	node3 -> next = node4;
+	node4 -> next = node1;
 
 	printf("Tamanho da lst = %d\n", lst_size(node1));
 	printf("Desordem = %f\n", main_disorder(node1));
