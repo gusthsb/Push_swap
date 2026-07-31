@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/30 16:50:41 by mamatos-          #+#    #+#             */
+/*   Updated: 2026/07/30 17:49:12 by mamatos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 
 int	lst_size(t_list *lst) /*não precisa de ponteiro duplo quando a função só faz a leitura da lst*/
@@ -16,4 +28,65 @@ int	lst_size(t_list *lst) /*não precisa de ponteiro duplo quando a função só
 		lst = lst -> next; // Passamos de nó e armazenamos essa operação
 	}
 	return (size); // retornamos o tamanho da lst, baseado na quantidade de vezes que o size recebeu +1;
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*temp;
+
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
+}
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new_node;
+
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+int	ft_atoi(const char *str)
+{
+	int		value;
+	int		i;
+	int		signal;
+
+	i = 0;
+	value = 0;
+	signal = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			signal *= -1;
+		i++;
+	}
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
+	{
+		value = value * 10 + (str[i] - 48);
+		i++;
+	}
+	return (value * signal);
 }
