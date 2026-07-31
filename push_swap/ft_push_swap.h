@@ -18,10 +18,10 @@
 # include <stdlib.h>
 # include "ftprintf/ft_printf.h"
 /* prototipações no .h e include da library do malloc*/
-typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq é a msm struct, fiquei com preguiça e apaguei a lib então*/
+typedef struct s_list
 {
-	int				content; /* mudando tipo void * para int * (so vamos trabalhar com inteiros, então void é desnecessário)*/
-	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros ||| fazendo cada elemento da lista ter seu proprio indice baseado no sort */
+	int				content;
+	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
 	
@@ -29,6 +29,7 @@ typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq 
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
+
 
 void	swap_a(t_list **lst);
 void	swap_b(t_list **lst);
@@ -41,7 +42,13 @@ void	reverse_rotate_b(t_list **lst_b);
 void	rrr(t_list **lst_a, t_list **lst_b);
 void	push_a(t_list **lst_b, t_list **lst_a);
 void	push_b(t_list **lst_a, t_list **lst_b);
+
+//index functions
 void	set_stack_indexes(t_list *lst_a);
+
+// Utils functions
 int		lst_size(t_list *lst);
 
+// Parsing functions
+int		is_array_duplicate(t_list *lst, int value);
 #endif

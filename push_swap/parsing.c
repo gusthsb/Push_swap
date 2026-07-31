@@ -14,7 +14,7 @@
 // 	return (0);
 // }
 
-int	is_arr_duplicate(t_list *lst, int value)
+int	is_array_duplicate(t_list *lst, int value)
 {
 	t_list	*current;
 
