@@ -49,26 +49,27 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	}
 	temp = *lst;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new;
+	while (temp -> next != *lst) //pra quando chegar no ultimo no (que aponta pra cbç)
+		temp = temp -> next;
+	temp -> next = new;
+	new -> next = *lst; //o ultimo do new aponta pra cbç
 }
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content) // estava dando warning na compilação, mudei de void *
 {
 	t_list	*new_node;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
+	new_node = malloc(sizeof(t_list)); // não precisa de cast para o proprio tipo da var
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
-	new_node->next = NULL;
+	new_node->next = new_node; // apontando para o proprio no, lista circular nao aponta pra null
 	return (new_node);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str) // mudança nos tipo de tipo de dado, push swap pd lidar com nmr grande
 {
-	int		value;
+	long	value; // long ao inves de int
 	int		i;
 	int		signal;
 
