@@ -42,8 +42,17 @@ void	rrr(t_list **lst_a, t_list **lst_b);
 void	push_a(t_list **lst_b, t_list **lst_a);
 void	push_b(t_list **lst_a, t_list **lst_b);
 
+// disorder functions
+double main_disorder(t_list *lst);
+
+// index functions
 void	set_stack_indexes(t_list *lst_a);
 
+// utils functions
+t_list	*ft_lstnew(int content);
 int		lst_size(t_list *lst);
+int		ft_isdigit(int c);
+long	ft_atol(const char *str);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif
