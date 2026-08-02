@@ -23,7 +23,7 @@ static int	*trans(t_list *lst_en, int *size)
 	return (new_lst);
 }
 
-double	calculate_disorder(int *lst_a, int size)
+static double	calculate_disorder(int *lst_a, int size)
 {
 	double	mistakes;
 	double	total_pairs;
