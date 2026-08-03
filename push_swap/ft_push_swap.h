@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/07/28 19:00:04 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/03 19:59:57 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq 
 	struct s_list	*prev;
 	
 }					t_list;
+
+typedef struct o_list
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+//  int disorder;
+}		op_list;
+
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/03 17:33:27 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/03 20:09:19 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int main(void)
-{
-	trans_c_l
-	if (checking_error == 1)
-		return (ft)
-	trans_c_i
-	trans_arr_to_lst
+// int main(void)
+// {
+// 	trans_c_l
+// 	if (checking_error == 1)
+// 		return (ft)
+// 	trans_c_i
+// 	trans_arr_to_lst
 	
-}
+// }

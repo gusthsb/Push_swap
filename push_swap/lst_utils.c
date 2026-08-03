@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 16:50:41 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/03 17:22:21 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/03 20:08:29 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ int	lst_size(t_list *lst) /*não precisa de ponteiro duplo quando a função só
 	return (size); // retornamos o tamanho da lst, baseado na quantidade de vezes que o size recebeu +1;
 }
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -65,29 +59,4 @@ t_list	*ft_lstnew(int content) // estava dando warning na compilação, mudei de
 	new_node->content = content;
 	new_node->next = new_node; // apontando para o proprio no, lista circular nao aponta pra null
 	return (new_node);
-}
-
-long	ft_atol(const char *str) // mudança nos tipo de tipo de dado, push swap pd lidar com nmr grande
-{
-	long	value;
-	int		i;
-	int		signal;
-
-	i = 0;
-	value = 0;
-	signal = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			signal *= -1;
-		i++;
-	}
-	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
-	{
-		value = value * 10 + (str[i] - 48);
-		i++;
-	}
-	return (value * signal);
 }
