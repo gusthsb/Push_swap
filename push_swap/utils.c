@@ -6,7 +6,7 @@
 /*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 16:50:41 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/07/30 17:49:12 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/03 17:22:21 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_list	*ft_lstnew(int content) // estava dando warning na compilação, mudei de
 
 long	ft_atol(const char *str) // mudança nos tipo de tipo de dado, push swap pd lidar com nmr grande
 {
-	long	value; // long ao inves de int
+	long	value;
 	int		i;
 	int		signal;
 
