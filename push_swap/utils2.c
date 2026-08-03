@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:08:09 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/03 18:01:55 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/03 20:02:39 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int count_numbers(char **str)
 	return (len);
 }
 
-long	*trans_a_to_long(char **str)
+long	*trans_a_to_long(const char **str)
 {
 	int		i;
 	long	*new_arr;
 
-	if (!str)
+	if (!str || !*str)
 		return (0);
 	new_arr = malloc(sizeof(long) * count_numbers(str));
 	if (!new_arr)
