@@ -12,20 +12,22 @@
 
 #include "ft_push_swap.h"
 
-int	is_array_duplicate(t_list *lst, int value)
+int	is_array_duplicate(long	*arr, int size)
 {
-	t_list	*current;
+	int	i;
+	int	j;
 
-	if (!lst)
-		return (0);
-	if (lst -> content == value)
-		return (1);
-	current = lst -> next;
-	while (current != lst)
+	i = 0;
+	while (i < size)
 	{
-		if (current -> content == value)
-			return (1);
-		current = current -> next;
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
