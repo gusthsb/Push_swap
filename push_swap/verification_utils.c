@@ -52,12 +52,10 @@ int	is_inter(char *valor)
 	if (valor[0] == '\0')
 		return (0);
 	i = 0;
-	if (valor[0] == '-')
-	{
-		if (valor[1] == '\0')
-			return (0);
-		i = 0;
-	}
+	if (valor[i] == '-' || valor[i] == '+')
+		i++;
+	if (valor[i] == '\0')
+		return (0);
 	while (valor[i])
 	{
 		if (ft_is_digit(valor[i]) == 0
