@@ -36,36 +36,47 @@ static int	find_rank(int *sorted, int size, int value) /*array já ordenado (*so
 				   --- provavelmente vamos fazer um security-guard em outra func com esse valor dps*/	
 }
 
+static void	fill_sorted(t_list *lst_a, int *sorted, int size)
+{
+	t_list	*current;
+	int		i;
+
+	current = lst_a;
+	i = 0;
+	while (i < size)
+	{
+		sorted[i] = current -> content;
+		current = current -> next;
+		i++;
+	}
+}
+
+static void	fill_indexes(t_list *lst_a, int *sorted, int size)
+{
+	t_list	*current;
+	int		i;
+
+	current = lst_a;
+	i = 0;
+	while (i < size)
+	{
+		current -> index = find_rank(sorted, size, current -> content);
+		current = current -> next;
+		i++;
+	}
+}
+
 void	set_stack_indexes(t_list *lst_a)
 {
 	int		size; // quant de nó na lst
 	int		*sorted; // array auxiliar
-	t_list	*current; // ponteiro copia, somente para andar pela lst e fazer a leitura 
-	int		i; // contador para passar o array
 
 	size = lst_size(lst_a); // para pegar o tamanho da lst inteira
 	sorted = malloc(sizeof(int) * size); // mallocando o aux array
 	if (!sorted)
 		return ; // security guard pra falha da mallocaria do bagulho
-	current = lst_a; // aponta pra cabeça da lst
-	i = 0;
-	while (current)
-	{
-		sorted[i] = current -> content; // sorted[i] recebe o conteudo(content) do nó atual(current) !! usa tradutor se não souber ler !! 
-		current = current -> next; // passamos de nó
-		i++;
-	}
-	sort_array(sorted, size); // chama a função que ordena o array auxiliar
-	current = lst_a; // fazendo current voltar na cbç da lst ||| "resetando" o loop da lst
-	while (current)
-	{                          // vou explicar esse loop na ultima linha
-		current -> index = find_rank(sorted, size, current -> content);
-		current = current -> next; 
-	}
-	free(sorted); // damos free no malloc e também ja "excluimos" o array auxiliar
+	fill_sorted(lst_a, sorted, size);
+	sort_array(sorted, size);
+	fill_indexes(lst_a, sorted, size);
+	free(sorted);
 }
-
-/*current -> index  --  o nó atual vai salvar em sua struct o indice de ordenação
-  find_rank(sorted, size, current -> content) -- como a prototipação pede, vamos passar a lista já ordenada(sorted) pelas outras funções, depois o tamanho(size) do array
-  e por ultimo parametro o conteudo(content) atual (current) do nó que estamos passando pelo loop
-  current = current -> next   --  passamos de nó */
