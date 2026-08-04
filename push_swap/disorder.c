@@ -64,33 +64,33 @@ double main_disorder(t_list *lst)
 	return (value);
 }
 // teste disordem / lst_size
-#include <stdio.h>
-int	main(void)
-{
-	t_list	*node1;
-	t_list	*node2;
-	t_list	*node3;
-	t_list	*node4;
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	t_list	*node1;
+// 	t_list	*node2;
+// 	t_list	*node3;
+// 	t_list	*node4;
 
-	node1 = malloc(sizeof(t_list));
-	node1 -> content = 4;
-	node2 = malloc(sizeof(t_list));
-	node2 -> content = 1;
-	node3 = malloc(sizeof(t_list));
-	node3 -> content = 3;
-	node4 = malloc(sizeof(t_list));
-	node4 -> content = 2;
+// 	node1 = malloc(sizeof(t_list));
+// 	node1 -> content = 4;
+// 	node2 = malloc(sizeof(t_list));
+// 	node2 -> content = 1;
+// 	node3 = malloc(sizeof(t_list));
+// 	node3 -> content = 3;
+// 	node4 = malloc(sizeof(t_list));
+// 	node4 -> content = 2;
 	
-	node1 -> next = node2;
-	node2 -> next = node3;
-	node3 -> next = node4;
-	node4 -> next = node1;
+// 	node1 -> next = node2;
+// 	node2 -> next = node3;
+// 	node3 -> next = node4;
+// 	node4 -> next = node1;
 
-	printf("Tamanho da lst = %d\n", lst_size(node1));
-	printf("Desordem = %f\n", main_disorder(node1));
+// 	printf("Tamanho da lst = %d\n", lst_size(node1));
+// 	printf("Desordem = %f\n", main_disorder(node1));
 
-	free(node1);
-	free(node2);
-	free(node3);
-	return (0);
-}
+// 	free(node1);
+// 	free(node2);
+// 	free(node3);
+// 	return (0);
+// }
