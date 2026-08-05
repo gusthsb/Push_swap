@@ -22,7 +22,7 @@ void	trans_arr_to_lst(t_list **lst, char **arr)
 	i = 1;
 	while (arr[i])
 	{
-		new_lst = ft_lstnew((int)ft_atol(arr[i])); // ja convertemos aqui
+		new_lst = ft_lstnew((int)ft_atol(arr[i])); // ja convertemos aqui e adicionamos na lst
 		if (!new_lst)
 			return;
 		ft_lstadd_back(lst, new_lst);
@@ -30,7 +30,7 @@ void	trans_arr_to_lst(t_list **lst, char **arr)
 	}
 }
 
-long	ft_atol(const char *str) // mudança nos tipo de tipo de dado, push swap pd lidar com nmr grande
+long	ft_atol(const char *str)
 {
 	long	value;
 	int		i;
@@ -49,13 +49,12 @@ long	ft_atol(const char *str) // mudança nos tipo de tipo de dado, push swap pd
 	}
 	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
+		if (value > ((long)INT_MAX + 1) / 10)
+			return ((long)INT_MAX + 1);
 		value = value * 10 + (str[i] - 48);
 		if (value > (long)INT_MAX + 1)
 			return ((long)INT_MAX + 1);
 		i++;
 	}
-	value = value * signal;
-	if (value > INT_MAX || value < INT_MIN)
-		return ((long)INT_MAX + 1);
 	return (value * signal);
 }
