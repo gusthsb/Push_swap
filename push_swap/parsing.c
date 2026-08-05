@@ -44,17 +44,18 @@ long	ft_atol(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			signal *= -1;
+			signal = -1;
 		i++;
 	}
-	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (value > ((long)INT_MAX + 1) / 10)
-			return ((long)INT_MAX + 1);
-		value = value * 10 + (str[i] - 48);
+		value = value * 10 + (str[i] - '0');
 		if (value > (long)INT_MAX + 1)
 			return ((long)INT_MAX + 1);
 		i++;
 	}
-	return (value * signal);
+	value = value * signal;
+	if (value > INT_MAX || value < INT_MIN)
+		return ((long)INT_MAX + 1);
+	return (value);
 }
