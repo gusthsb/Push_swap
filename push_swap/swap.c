@@ -21,9 +21,6 @@ void	swap_a(t_list **lst_a)
 
 	if (!lst_a || !(*lst_a) || (*lst_a) -> next == *lst_a)
 		return ;
-	/* !lst_a - checa se o endereço da stack que passamos é null
-	   !(*lst_a) checa se a stack é null
-		(*lst_a) -> next == *lst_a  -- checa se a stack tem apenas um nó existente */
 	first = *lst_a;
 	second = first -> next;
 	if (second -> next == first)
@@ -31,8 +28,6 @@ void	swap_a(t_list **lst_a)
 		*lst_a = second;
 		return ;
 	}
-	/* Tratando caso especial, se a stack só tiver 2 elementos, só fazemos
-	   cabeça virar o segundo nó da lst */
 	before = first -> prev;
 	after = second -> next;
 	before -> next = second;
