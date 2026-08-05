@@ -59,6 +59,8 @@ t_list	*ft_lstnew(int content) // estava dando warning na compilação, mudei de
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
+	new_node -> index = 0;
 	new_node->next = new_node; // apontando para o proprio no, lista circular nao aponta pra null
+	new_node -> prev = new_node;
 	return (new_node);
 }
