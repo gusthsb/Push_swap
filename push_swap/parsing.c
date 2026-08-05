@@ -15,7 +15,6 @@
 void	trans_arr_to_lst(t_list **lst, char **arr)
 {
 	t_list	*new_lst;
-	t_list	*temp;
 	int		i;
 
 	if (!lst || !arr)
@@ -23,9 +22,9 @@ void	trans_arr_to_lst(t_list **lst, char **arr)
 	i = 1;
 	while (arr[i])
 	{
-		new_lst = ft_lstnew(arr[i]);
+		new_lst = ft_lstnew((int)ft_atol(arr[i])); // ja convertemos aqui
 		if (!new_lst)
-			return ;
+			return;
 		ft_lstadd_back(lst, new_lst);
 		i++;
 	}
