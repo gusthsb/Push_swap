@@ -51,7 +51,12 @@ long	ft_atol(const char *str) // mudança nos tipo de tipo de dado, push swap pd
 	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
 		value = value * 10 + (str[i] - 48);
+		if (value > (long)INT_MAX + 1)
+			return ((long)INT_MAX + 1);
 		i++;
 	}
+	value = value * signal;
+	if (value > INT_MAX || value < INT_MIN)
+		return ((long)INT_MAX + 1);
 	return (value * signal);
 }
