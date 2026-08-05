@@ -58,7 +58,7 @@ int	is_inter(char *valor)
 		return (0);
 	while (valor[i])
 	{
-		if (ft_is_digit(valor[i]) == 0)
+		if (ft_isdigit(valor[i]) == 0)
 			return (0);
 		i++;
 	}
