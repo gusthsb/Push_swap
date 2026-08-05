@@ -40,13 +40,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (*lst == NULL)
 	{
 		*lst = new;
+		new -> next = new;
+		new -> prev = new;
 		return ;
 	}
-	temp = *lst;
-	while (temp -> next != *lst) //pra quando chegar no ultimo no (que aponta pra cbç)
-		temp = temp -> next;
+	temp = (*lst) -> prev;
 	temp -> next = new;
-	new -> next = *lst; //o ultimo do new aponta pra cbç
+	new -> prev = temp;
+	new -> next = *lst;
+	(*lst) -> prev = new;
 }
 
 t_list	*ft_lstnew(int content) // estava dando warning na compilação, mudei de void *
