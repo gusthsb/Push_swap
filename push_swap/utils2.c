@@ -28,10 +28,10 @@ long	*trans_a_to_long(const char **str)
 	long	*new_arr;
 
 	if (!str || !*str)
-		return (0);
+		return (NULL);
 	new_arr = malloc(sizeof(long) * count_numbers(str));
 	if (!new_arr)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (str[i])
 	{
