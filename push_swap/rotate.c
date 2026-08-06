@@ -11,22 +11,29 @@
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+
+static void	rotate(t_list **lst)
+{
+	if (!lst || !*lst || (*lst)->next == *lst)
+		return ;
+	*lst = (*lst)->next;
+}
+
 void	rotate_a(t_list **lst_a)
 {
-	if (!lst_a || !(*lst_a) || !(*lst_a) -> next)
-		return ;
-	*lst_a = (*lst_a) -> next;
+	rotate(lst_a);
+	write(1, "ra\n", 3);
 }
 
 void	rotate_b(t_list **lst_b)
 {
-	if (!lst_b || !(*lst_b) || !(*lst_b) -> next)
-		return ;
-	*lst_b = (*lst_b) -> next;
+	rotate(lst_b);
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_list **lst_a, t_list **lst_b)
 {
-	rotate_a(lst_a);
-	rotate_b(lst_b);
+	rotate(lst_a);
+	rotate(lst_b);
+	write(1, "rr\n", 3);
 }
