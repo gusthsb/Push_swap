@@ -65,11 +65,14 @@ int	is_inter(char *valor)
 	return (1);
 }
 
-int	checking_error(char *valor)
+int	checking_error(char *value)
 {
-	if (!is_inter(valor))
+	long	value;
+
+	if (!is_inter(value))
 		return (0);
-	// if (!is_arr_duplicate(valor))
-	// 	return (0);
+	value = ft_atol(value);
+	if (value > INT_MAX || value < INT_MIN)
+		return (0);
 	return (1);
 }
