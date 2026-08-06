@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-static int count_numbers(char **str)
+static int count_numbers(const char **str)
 {
 	int	len;
 
