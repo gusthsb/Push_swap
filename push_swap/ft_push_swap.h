@@ -59,8 +59,18 @@ void	set_stack_indexes(t_list *lst_a);
 // utils functions
 t_list	*ft_lstnew(int content);
 int		lst_size(t_list *lst);
-int		ft_isdigit(int c);
-long	ft_atol(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+
+// verifications functions
+int		is_array_duplicate(long	*arr, int size);
+int		ft_error(void);
+int		ft_isdigit(int c);
+int		is_inter(char *valor);
+long	ft_atol(const char *str);
+int		checking_error(char *valor);
+
+// trans functions
+long	*trans_a_to_long(const char **str);
+void	trans_arr_to_lst(t_list **lst, char **arr);
 
 #endif
