@@ -40,3 +40,21 @@ long	*trans_a_to_long(const char **str)
 	}
 	return (new_arr);
 }
+
+int		is_sorted(t_list *lst)
+{
+	t_list	*start;
+	t_list	*current;
+
+	if (!lst || lst_size(lst) <= 1)
+		return (1);
+	start = lst;
+	current = lst;
+	while (current -> next != start)
+	{
+		if (current -> content > current -> next -> content)
+			return (0);
+		current = current -> next;
+	}
+	return (1);
+}
