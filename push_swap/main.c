@@ -12,12 +12,40 @@
 
 #include "ft_push_swap.h"
 
-// int main(void)
-// {
-// 	trans_c_l
-// 	if (checking_error == 1)
-// 		return (ft)
-// 	trans_c_i
-// 	trans_arr_to_lst
-	
-// }
+static int	args_validation(int argc, char **argv, long **array, int *size)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc - 1)
+	{
+		if (!checking_error(argv[i + 1]))
+			return (0);
+		i++;
+	}
+	*size = argc - 1;
+	*array = trans_a_to_long((const char **)&argv[i]);
+	if (!*array)
+		return (0);
+	if (is_array_duplicate(*array, *size))
+	{
+		free(*array);
+		return (0);
+	}
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	long	*array;
+	int		size;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (0);
+	if (!args_validation(argc, argv, &array, &size))
+		return (ft_error());
+}
