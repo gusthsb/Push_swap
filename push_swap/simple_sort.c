@@ -78,3 +78,33 @@ static void	rotate_to_top(t_list **stack_a, int pos, int size)
 		}
 	}
 }
+
+static void	min_to_b(t_list **stack_a, t_list **stack_b)
+{
+	int	pos;
+	int	size;
+
+	size = lst_size(*stack_a);
+	pos = min_position(*stack_a);
+	rotate_to_top(stack_a, pos, size);
+	push_b(stack_b, stack_a);
+}
+
+void	sort_simple(t_list **stack_a, t_list **stack_b)
+{
+	int	size;
+
+	size = lst_size(*stack_a);
+	if (size == 2)
+		two_sorted(stack_a);
+	else if (size == 3)
+		three_sorted(stack_a);
+	else if (size <= 5)
+	{
+		while (lst_size(*stack_a) > 3)
+			min_to_b(stack_a, stack_b);
+		three_sorted(stack_a);
+		while (*stack_b)
+			push_a(stack_a, stack_b);
+	}
+}
