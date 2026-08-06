@@ -63,7 +63,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 int		is_array_duplicate(long	*arr, int size);
 int		ft_error(void);
 int		ft_isdigit(int c);
-int		is_inter(char *valor);
+int		is_inter(char *str);
 long	ft_atol(const char *str);
 int		checking_error(char *str);
 
