@@ -65,13 +65,13 @@ int	is_inter(char *valor)
 	return (1);
 }
 
-int	checking_error(char *value)
+int	checking_error(char *str)
 {
 	long	value;
 
-	if (!is_inter(value))
+	if (!is_inter(str))
 		return (0);
-	value = ft_atol(value);
+	value = ft_atol(str);
 	if (value > INT_MAX || value < INT_MIN)
 		return (0);
 	return (1);
