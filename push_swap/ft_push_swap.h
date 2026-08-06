@@ -47,8 +47,8 @@ typedef struct o_list
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-void	swap_a(t_list **lst);
-void	swap_b(t_list **lst);
+void	swap_a(t_list **lst_a);
+void	swap_b(t_list **lst_b);
 void	swap_both(t_list **lst_a, t_list **lst_b);
 void	rotate_a(t_list **lst_a);
 void	rotate_b(t_list **lst_b);
