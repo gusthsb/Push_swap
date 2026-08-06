@@ -22,7 +22,7 @@ typedef struct s_config
 {
 	int		bench_mode;
 	char	*strategy;
-}			t_list;
+}			t_config;
 
 typedef struct s_list
 {
