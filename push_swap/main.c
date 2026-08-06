@@ -24,7 +24,7 @@ static int	args_validation(int argc, char **argv, long **array, int *size)
 		i++;
 	}
 	*size = argc - 1;
-	*array = trans_a_to_long((const char **)&argv[i]);
+	*array = trans_a_to_long((const char **)&argv[1]);
 	if (!*array)
 		return (0);
 	if (is_array_duplicate(*array, *size))
@@ -48,4 +48,16 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!args_validation(argc, argv, &array, &size))
 		return (ft_error());
+	free(array);
+	trans_arr_to_lst(&stack_a, argv);
+	set_stack_indexes(stack_a);
+	if (size <= 1)
+	{
+		ft_lstclear(&stack_a);
+		return (0);
+	}
+	(void)stack_b;
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
+	return (0);
 }
