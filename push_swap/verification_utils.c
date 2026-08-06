@@ -34,8 +34,8 @@ int	is_array_duplicate(long	*arr, int size)
 
 int	ft_error(void)
 {
-	write(1, "Error\n", 7);
-	return (7);
+	write(1, "Error\n", 6);
+	return (6);
 }
 
 int	ft_isdigit(int c)
