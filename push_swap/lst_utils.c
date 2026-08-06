@@ -64,3 +64,21 @@ t_list	*ft_lstnew(int content) // estava dando warning na compilação, mudei de
 	new_node -> prev = new_node;
 	return (new_node);
 }
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*current;
+	t_list	*next;
+
+	if (!lst || !*lst)
+		return ;
+	current = (*lst) -> next;
+	while (current != *lst)
+	{
+		next = current -> next;
+		free(current);
+		current = next;
+	}
+	free(*lst);
+	*lst = NULL;
+}
