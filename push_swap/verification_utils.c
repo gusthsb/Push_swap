@@ -45,20 +45,20 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	is_inter(char *valor)
+int	is_inter(char *str)
 {
 	int	i;
 
-	if (valor[0] == '\0')
+	if (str[0] == '\0')
 		return (0);
 	i = 0;
-	if (valor[i] == '-' || valor[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (valor[i] == '\0')
+	if (str[i] == '\0')
 		return (0);
-	while (valor[i])
+	while (str[i])
 	{
-		if (ft_isdigit(valor[i]) == 0)
+		if (ft_isdigit(str[i]) == 0)
 			return (0);
 		i++;
 	}
