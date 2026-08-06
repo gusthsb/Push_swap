@@ -65,7 +65,7 @@ int		ft_error(void);
 int		ft_isdigit(int c);
 int		is_inter(char *valor);
 long	ft_atol(const char *str);
-int		checking_error(char *valor);
+int		checking_error(char *str);
 
 // trans functions
 long	*trans_a_to_long(const char **str);
