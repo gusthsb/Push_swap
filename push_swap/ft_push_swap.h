@@ -45,8 +45,8 @@ void	rr(t_list **lst_a, t_list **lst_b);
 void	reverse_rotate_a(t_list **lst_a);
 void	reverse_rotate_b(t_list **lst_b);
 void	rrr(t_list **lst_a, t_list **lst_b);
-void	push_a(t_list **lst_b, t_list **lst_a);
-void	push_b(t_list **lst_a, t_list **lst_b);
+void	push_a(t_list **dst_a, t_list **src_b);
+void	push_b(t_list **dst_b, t_list **src_a);
 
 // disorder functions
 double main_disorder(t_list *lst);
