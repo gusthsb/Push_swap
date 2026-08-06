@@ -17,31 +17,22 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "ftprintf/ft_printf.h"
-/* prototipações no .h e include da library do malloc*/
-typedef struct s_list /* se utilizar junto com a libft, tem que mudar o nome pq é a msm struct, fiquei com preguiça e apaguei a lib então*/
+
+typedef struct s_config
 {
-	int				content; /* mudando tipo void * para int * (so vamos trabalhar com inteiros, então void é desnecessário)*/
-	int				index; /* adicionando int index para otimizar/facilitar comparação dos numeros ||| fazendo cada elemento da lista ter seu proprio indice baseado no sort */
+	int		bench_mode;
+	char	*strategy;
+}			t_list;
+
+typedef struct s_list
+{
+	int				content;
+	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
 	
 }					t_list;
 
-typedef struct o_list
-{
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-//  int disorder;
-}		op_list;
 
 
 # define INT_MAX 2147483647
