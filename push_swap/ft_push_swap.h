@@ -58,6 +58,7 @@ void	set_stack_indexes(t_list *lst_a);
 t_list	*ft_lstnew(int content);
 int		lst_size(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst);
 
 // verifications functions
 int		is_array_duplicate(long	*arr, int size);
