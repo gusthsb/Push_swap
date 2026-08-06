@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/30 17:56:53 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/07/28 16:36:25 by gustde-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_push_swap.h"
 
 static void	unlink_top(t_list **src)
@@ -44,24 +32,25 @@ static void	insert_top(t_list **dst, t_list *moved)
 	*dst = moved;
 }
 
-void	push_a(t_list **dst_a, t_list **src_b)
+static void	push(t_list **dst, t_list **src)
 {
 	t_list	*moved;
 
-	if (!src_b || !(*src_b))
+	if (!src || !*src)
 		return ;
-	moved = *src_b;
-	unlink_top(src_b);
-	insert_top(dst_a, moved);
+	moved = *src;
+	unlink_top(src);
+	insert_top(dst, moved);
+}
+
+void	push_a(t_list **dst_a, t_list **src_b)
+{
+	push(dst_a, src_b);
+	write(1, "pa\n", 3);
 }
 
 void	push_b(t_list **dst_b, t_list **src_a)
 {
-	t_list	*moved;
-
-	if (!src_a || !(*src_a))
-		return ;
-	moved = *src_a;
-	unlink_top(src_a);
-	insert_top(dst_b, moved);
+	push(dst_b, src_a);
+	write(1, "pb\n", 3);
 }
