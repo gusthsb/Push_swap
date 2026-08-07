@@ -15,22 +15,24 @@ void	three_sorted(t_list **lst)
 	first = (*lst) -> index;
 	second = (*lst) -> next -> index;
 	third = (*lst) -> next -> next -> index;
-	if (first > second && second > third)
+	if (first < second && second < third)
+		return ;
+	if (first > second && second < third && first < third)
+		swap_a(lst);
+	else if (first > second && second < third && first > third)
+		rotate_a(lst);
+	else if (first < second && second > third && first > third)
+		reverse_rotate_a(lst);
+	else if (first < second && second > third && first < third)
+	{
+		swap_a(lst);
+		rotate_a(lst);
+	}
+	else if (first > second && second > third)
 	{
 		swap_a(lst);
 		reverse_rotate_a(lst);
 	}
-	else if (first > third && third < second)
-		rotate_a(lst);
-	else if (second > first && first >third)
-		reverse_rotate_a(lst);
-	else if (second > third && third > first)
-	{
-		swap_a(lst);
-		rotate_a(lst);
-	}
-	else if (third > first && first > second)
-		swap_a(lst);
 }
 
 int	min_position(t_list *lst)
