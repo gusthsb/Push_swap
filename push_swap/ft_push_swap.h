@@ -74,4 +74,11 @@ int		checking_error(char *str);
 long	*trans_a_to_long(const char **str);
 void	trans_arr_to_lst(t_list **lst, char **arr);
 
+// sort functions // sort utils
+void	min_to_b(t_list **stack_a, t_list **stack_b);
+void	rotate_to_top(t_list **stack_a, int pos, int size);
+int		min_position(t_list *lst);
+void	three_sorted(t_list **lst);
+void	two_sorted(t_list **lst);
+
 #endif
