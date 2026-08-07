@@ -80,5 +80,6 @@ void	rotate_to_top(t_list **stack_a, int pos, int size);
 int		min_position(t_list *lst);
 void	three_sorted(t_list **lst);
 void	two_sorted(t_list **lst);
+void	sort_simple(t_list **stack_a, t_list **stack_b);
 
 #endif
