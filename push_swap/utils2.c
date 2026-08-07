@@ -50,9 +50,9 @@ int		is_sorted(t_list *lst)
 		return (1);
 	start = lst;
 	current = lst;
-	while (current -> next != start)
+	while (current -> index != start)
 	{
-		if (current -> content > current -> next -> content)
+		if (current -> index > current -> next -> index)
 			return (0);
 		current = current -> next;
 	}
