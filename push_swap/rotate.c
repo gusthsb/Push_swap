@@ -27,11 +27,8 @@ void	rotate_a(t_list **lst_a)
 
 void	rotate_b(t_list **lst_b)
 {
-	op_count	rb_count;
-
 	rotate(lst_b);
 	write(1, "rb\n", 3);
-	rb_count ;
 }
 
 void	rr(t_list **lst_a, t_list **lst_b)
