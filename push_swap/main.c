@@ -35,9 +35,9 @@ static int	args_validation(int argc, char **argv, long **array, int *size)
 	return (1);
 }
 
-static void	dispatch_sort(t_config *cfg, t_list **stack_a, t_list **stack_b)
+static void	dispatch_sort(t_config *config, t_list **stack_a, t_list **stack_b)
 {
-	if (ft_strcmp(cfg->strategy, "simple") == 0)
+	if (ft_strcmp(config -> strategy, "simple") == 0)
 		sort_simple(stack_a, stack_b);
 	else
 	{
