@@ -35,26 +35,6 @@ static int	args_validation(int argc, char **argv, long **array, int *size)
 	return (1);
 }
 
-static int	op_reading(int argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (ft_strcmp(argv[i], "--adaptive") || ft_strcmp(argv[i], "--simple"))
-		{
-			sort_simple(t_list **stack_a, t_list **stack_b);
-			return ;
-		}
-		else if (ft_strcmp(argv[i], "--complex"))
-			NULL;
-		else if (ft_strcmp(argv[i], "--medium"))
-			NULL;
-		i++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;

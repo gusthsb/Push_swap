@@ -91,11 +91,15 @@ long	*trans_a_to_long(const char **str);
 void	trans_arr_to_lst(t_list **lst, char **arr);
 
 // sort functions // sort utils
+int		min_position(t_list *lst);
 void	min_to_b(t_list **stack_a, t_list **stack_b);
 void	rotate_to_top(t_list **stack_a, int pos, int size);
-int		min_position(t_list *lst);
 void	three_sorted(t_list **lst);
 void	two_sorted(t_list **lst);
 void	sort_simple(t_list **stack_a, t_list **stack_b);
+
+// flags functions
+void	parse_flags(int argc, char **argv, t_config *config);
+int		build_numeric_args(int argc, char **argv, char ***out);
 
 #endif
