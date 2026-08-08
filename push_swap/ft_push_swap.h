@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "ftprintf/ft_printf.h"
 
 typedef struct s_config
 {
