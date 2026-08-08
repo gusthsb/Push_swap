@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 19:44:32 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/07/28 15:39:01 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/07 17:37:38 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ void	rotate_a(t_list **lst_a)
 
 void	rotate_b(t_list **lst_b)
 {
+	op_count	rb_count;
+
 	rotate(lst_b);
 	write(1, "rb\n", 3);
+	rb_count ;
 }
 
 void	rr(t_list **lst_a, t_list **lst_b)

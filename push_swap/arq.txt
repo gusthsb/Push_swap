@@ -377,3 +377,5 @@ General term of use of the site
 Rules of procedure
 Terms of use for video surveillance
 Legal notices
+
+https://git-scm.com/book/en/v2

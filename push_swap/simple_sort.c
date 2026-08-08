@@ -9,10 +9,13 @@ void	sort_simple(t_list **stack_a, t_list **stack_b)
 		two_sorted(stack_a);
 	else if (size == 3)
 		three_sorted(stack_a);
-	else if (size <= 5)
+	else
 	{
-		while (lst_size(*stack_a) > 3)
+		while (size > 3)
+		{
 			min_to_b(stack_a, stack_b);
+			size--;
+		}
 		three_sorted(stack_a);
 		while (*stack_b)
 			push_a(stack_a, stack_b);

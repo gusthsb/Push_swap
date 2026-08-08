@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/03 19:59:57 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/07 17:35:58 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ typedef struct s_config
 	int		bench_mode;
 	char	*strategy;
 }			t_config;
+
+typedef struct	s_op
+{
+	int	pa;
+	int	pb;
+	int ra;
+	int	rb;
+	int	rr;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	count;
+}					op_count;
 
 typedef struct s_list
 {
