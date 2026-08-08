@@ -41,8 +41,7 @@ static void	dispatch_sort(t_config *cfg, t_list **stack_a, t_list **stack_b)
 		sort_simple(stack_a, stack_b);
 	else
 	{
-		// TODO: medium (O(n*sqrt(n))), complex (O(n log n)) e adaptive
-		// de verdade ainda nao existem; caindo pro simple por enquanto.
+		/* logica dos sorts aqui dps*/
 		sort_simple(stack_a, stack_b);
 	}
 }

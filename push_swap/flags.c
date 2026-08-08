@@ -1,14 +1,14 @@
 #include "ft_push_swap.h"
 
-static int	flag(const char *arg)
+static int	is_flag(const char *arg)
 {
 	if (ft_strcmp(arg, "--simple") == 0)
 		return (1);
-	if (ft_strcmp(arg, "--medium" == 0))
+	if (ft_strcmp(arg, "--medium") == 0)
 		return (1);
 	if (ft_strcmp(arg, "--complex") == 0)
 		return (1);
-	if (ft_strcmp(arg, "--adaptive" == 0))
+	if (ft_strcmp(arg, "--adaptive") == 0)
 		return (1);
 	if (ft_strcmp(arg, "--bench") == 0)
 		return (1);
