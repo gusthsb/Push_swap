@@ -35,28 +35,52 @@ static int	args_validation(int argc, char **argv, long **array, int *size)
 	return (1);
 }
 
+static void	dispatch_sort(t_config *cfg, t_list **stack_a, t_list **stack_b)
+{
+	if (ft_strcmp(cfg->strategy, "simple") == 0)
+		sort_simple(stack_a, stack_b);
+	else
+	{
+		// TODO: medium (O(n*sqrt(n))), complex (O(n log n)) e adaptive
+		// de verdade ainda nao existem; caindo pro simple por enquanto.
+		sort_simple(stack_a, stack_b);
+	}
+}
+ 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	long	*array;
-	int		size;
-
+	t_list		*stack_a;
+	t_list		*stack_b;
+	t_config	cfg;
+	char		**nums;
+	long		*array;
+	int			size;
+	int			num_count;
+ 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	if (!args_validation(argc, argv, &array, &size))
+	parse_flags(argc, argv, &cfg);
+	num_count = build_numeric_args(argc, argv, &nums);
+	if (num_count < 0)
 		return (ft_error());
-	free(array);
-	trans_arr_to_lst(&stack_a, argv);
-	set_stack_indexes(stack_a);
-	if (size <= 1)
+	if (num_count == 0)
 	{
-		ft_lstclear(&stack_a);
+		free(nums);
 		return (0);
 	}
-	(void)stack_b;
+	if (!args_validation(num_count + 1, nums, &array, &size))
+	{
+		free(nums);
+		return (ft_error());
+	}
+	free(array);
+	trans_arr_to_lst(&stack_a, nums);
+	free(nums);
+	set_stack_indexes(stack_a);
+	if (size > 1)
+		dispatch_sort(&cfg, &stack_a, &stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (0);
