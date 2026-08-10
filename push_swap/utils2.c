@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:08:09 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/03 20:02:39 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 17:46:38 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int count_numbers(const char **str)
+static int	count_numbers(const char **str)
 {
 	int	len;
 
@@ -41,7 +41,7 @@ long	*trans_a_to_long(const char **str)
 	return (new_arr);
 }
 
-int		is_sorted(t_list *lst)
+int	is_sorted(t_list *lst)
 {
 	t_list	*start;
 	t_list	*current;

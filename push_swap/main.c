@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/07 17:29:43 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 17:48:06 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ static int	args_validation(int argc, char **argv, long **array, int *size)
 	return (1);
 }
 
-static void	dispatch_sort(t_config *config, t_list **stack_a, t_list **stack_b)
+static void	dispatch_sort(t_config *config, t_list **stack_a,
+	t_list **stack_b, t_count *op)
 {
 	if (ft_strcmp(config -> strategy, "simple") == 0)
-		sort_simple(stack_a, stack_b);
+		sort_simple(stack_a, stack_b, op);
 	else
 	{
-		/* logica dos sorts aqui dps*/
-		sort_simple(stack_a, stack_b);
+		sort_simple(stack_a, stack_b, op);
 	}
 }
- 
+
 int	main(int argc, char **argv)
 {
 	t_list		*stack_a;
@@ -55,7 +55,8 @@ int	main(int argc, char **argv)
 	long		*array;
 	int			size;
 	int			num_count;
- 
+	t_count	op;
+
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
@@ -78,8 +79,8 @@ int	main(int argc, char **argv)
 	trans_arr_to_lst(&stack_a, nums);
 	free(nums);
 	set_stack_indexes(stack_a);
-	if (size > 1)
-		dispatch_sort(&config, &stack_a, &stack_b);
+	if (size > 1 && !is_sorted(stack_a))
+		dispatch_sort(&config, &stack_a, &stack_b, &op);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (0);

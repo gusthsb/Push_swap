@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 19:44:32 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/10 16:20:35 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 17:43:49 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	rotate(t_list **lst)
 	*lst = (*lst)->next;
 }
 
-void	rotate_a(t_list **lst_a, op_count *op)
+void	rotate_a(t_list **lst_a, t_count *op)
 {
 	rotate(lst_a);
 	write(1, "ra\n", 3);
@@ -30,7 +30,7 @@ void	rotate_a(t_list **lst_a, op_count *op)
 	}
 }
 
-void	rotate_b(t_list **lst_b, op_count *op)
+void	rotate_b(t_list **lst_b, t_count *op)
 {
 	rotate(lst_b);
 	write(1, "rb\n", 3);
@@ -41,7 +41,7 @@ void	rotate_b(t_list **lst_b, op_count *op)
 	}
 }
 
-void	rr(t_list **lst_a, t_list **lst_b, op_count *op)
+void	rr(t_list **lst_a, t_list **lst_b, t_count *op)
 {
 	rotate(lst_a);
 	rotate(lst_b);

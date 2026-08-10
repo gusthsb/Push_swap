@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 16:50:41 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/07 16:45:34 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 17:46:01 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	lst_size(t_list *lst)
 	return (size);
 }
 
-
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temp;
@@ -44,11 +43,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		new -> prev = new;
 		return ;
 	}
-	temp = (*lst) -> prev;
+	temp = (*lst)-> prev;
 	temp -> next = new;
 	new -> prev = temp;
 	new -> next = *lst;
-	(*lst) -> prev = new;
+	(*lst)-> prev = new;
 }
 
 t_list	*ft_lstnew(int content)
@@ -72,7 +71,7 @@ void	ft_lstclear(t_list **lst)
 
 	if (!lst || !*lst)
 		return ;
-	current = (*lst) -> next;
+	current = (*lst)-> next;
 	while (current != *lst)
 	{
 		next = current -> next;

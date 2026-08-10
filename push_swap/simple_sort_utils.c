@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple_sort_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/10 17:27:00 by mamatos-          #+#    #+#             */
+/*   Updated: 2026/08/10 17:43:43 by mamatos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 
-void	two_sorted(t_list **lst, op_count *op)
+void	two_sorted(t_list **lst, t_count *op)
 {
-	if ((*lst) -> index > (*lst) -> next -> index)
+	if ((*lst)->index > (*lst)-> next->index)
 		swap_a(lst, op);
 }
 
-void	three_sorted(t_list **lst, op_count *op)
+void	three_sorted(t_list **lst, t_count *op)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	first = (*lst) -> index;
-	second = (*lst) -> next -> index;
-	third = (*lst) -> next -> next -> index;
+	first = (*lst)-> index;
+	second = (*lst)-> next->index;
+	third = (*lst)-> next -> next -> index;
 	if (first < second && second < third)
 		return ;
 	if (first > second && second < third && first < third)
@@ -61,7 +73,7 @@ int	min_position(t_list *lst)
 	return (pos);
 }
 
-void	rotate_to_top(t_list **stack_a, int pos, int size, op_count *op)
+void	rotate_to_top(t_list **stack_a, int pos, int size, t_count *op)
 {
 	if (pos <= size / 2)
 	{
@@ -81,7 +93,7 @@ void	rotate_to_top(t_list **stack_a, int pos, int size, op_count *op)
 	}
 }
 
-void	min_to_b(t_list **stack_a, t_list **stack_b, op_count *op)
+void	min_to_b(t_list **stack_a, t_list **stack_b, t_count *op)
 {
 	int	pos;
 	int	size;

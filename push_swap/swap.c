@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 16:12:54 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/10 16:14:22 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 17:43:44 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	do_swap(t_list **lst)
 	*lst = second;
 }
 
-void	swap_a(t_list **lst_a, op_count *op)
+void	swap_a(t_list **lst_a, t_count *op)
 {
 	if (!lst_a || !*lst_a || (*lst_a)->next == *lst_a)
 		return ;
@@ -48,7 +48,7 @@ void	swap_a(t_list **lst_a, op_count *op)
 	}
 }
 
-void	swap_b(t_list **lst_b, op_count *op)
+void	swap_b(t_list **lst_b, t_count *op)
 {
 	if (!lst_b || !*lst_b || (*lst_b)->next == *lst_b)
 		return ;
@@ -64,7 +64,7 @@ void	swap_b(t_list **lst_b, op_count *op)
 	}
 }
 
-void	swap_both(t_list **lst_a, t_list **lst_b, op_count *op)
+void	swap_both(t_list **lst_a, t_list **lst_b, t_count *op)
 {
 	if (lst_a && *lst_a && (*lst_a)->next != *lst_a)
 	{

@@ -1,35 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   medium_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/10 17:46:16 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/10 17:46:17 by mamatos-         ###   ########.fr       */
+/*   Created: 2026/08/10 18:50:21 by mamatos-          #+#    #+#             */
+/*   Updated: 2026/08/10 18:57:33 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	sort_simple(t_list **stack_a, t_list **stack_b, t_count *op)
-{
-	int	size;
+5
+1
+2
+3
 
-	size = lst_size(*stack_a);
-	if (size == 2)
-		two_sorted(stack_a, op);
-	else if (size == 3)
-		three_sorted(stack_a, op);
-	else
-	{
-		while (size > 3)
-		{
-			min_to_b(stack_a, stack_b, op);
-			size--;
-		}
-		three_sorted(stack_a, op);
-		while (*stack_b)
-			push_a(stack_a, stack_b, op);
-	}
-}
+1 5
+2
+3
+
+5 1
+2
+3
+
+2 5
+3 1
+
+5 2
+3 1
+
+3 5
+  2
+  1
+
+5 3
+  2
+  1
+  
+  5
+  3
+  2
+  1
+
+1
+2
+3 
+5

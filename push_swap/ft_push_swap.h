@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/10 16:38:33 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 17:44:47 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ typedef struct s_config
 	char	*strategy;
 }			t_config;
 
-typedef struct	s_op
+typedef struct s_op
 {
 	int	pa;
 	int	pb;
-	int ra;
+	int	ra;
 	int	rb;
 	int	rr;
 	int	sa;
@@ -37,7 +37,7 @@ typedef struct	s_op
 	int	rrb;
 	int	rrr;
 	int	count;
-}					op_count;
+}				t_count;
 
 typedef struct s_list
 {
@@ -45,26 +45,25 @@ typedef struct s_list
 	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
-	
 }					t_list;
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-void	swap_a(t_list **lst_a, op_count *op);
-void	swap_b(t_list **lst_b, op_count *op);
-void	swap_both(t_list **lst_a, t_list **lst_b, op_count *op);
-void	rotate_a(t_list **lst_a, op_count *op);
-void	rotate_b(t_list **lst_b, op_count *op);
-void	rr(t_list **lst_a, t_list **lst_b, op_count *op);
-void	reverse_rotate_a(t_list **lst_a, op_count *op);
-void	reverse_rotate_b(t_list **lst_b, op_count *op);
-void	rrr(t_list **lst_a, t_list **lst_b, op_count *op);
-void	push_a(t_list **dst_a, t_list **src_b, op_count *op);
-void	push_b(t_list **dst_b, t_list **src_a, op_count *op);
+void	swap_a(t_list **lst_a, t_count *op);
+void	swap_b(t_list **lst_b, t_count *op);
+void	swap_both(t_list **lst_a, t_list **lst_b, t_count *op);
+void	rotate_a(t_list **lst_a, t_count *op);
+void	rotate_b(t_list **lst_b, t_count *op);
+void	rr(t_list **lst_a, t_list **lst_b, t_count *op);
+void	reverse_rotate_a(t_list **lst_a, t_count *op);
+void	reverse_rotate_b(t_list **lst_b, t_count *op);
+void	rrr(t_list **lst_a, t_list **lst_b, t_count *op);
+void	push_a(t_list **dst_a, t_list **src_b, t_count *op);
+void	push_b(t_list **dst_b, t_list **src_a, t_count *op);
 
 // disorder functions
-double main_disorder(t_list *lst);
+double	main_disorder(t_list *lst);
 
 // index functions
 void	set_stack_indexes(t_list *lst_a);
@@ -91,11 +90,11 @@ void	trans_arr_to_lst(t_list **lst, char **arr);
 
 // sort functions // sort utils
 int		min_position(t_list *lst);
-void	min_to_b(t_list **stack_a, t_list **stack_b, op_count *op);
-void	rotate_to_top(t_list **stack_a, int pos, int size, op_count *op);
-void	two_sorted(t_list **lst, op_count *op);
-void	three_sorted(t_list **lst, op_count *op);
-void	sort_simple(t_list **stack_a, t_list **stack_b, op_count *op);
+void	min_to_b(t_list **stack_a, t_list **stack_b, t_count *op);
+void	rotate_to_top(t_list **stack_a, int pos, int size, t_count *op);
+void	two_sorted(t_list **lst, t_count *op);
+void	three_sorted(t_list **lst, t_count *op);
+void	sort_simple(t_list **stack_a, t_list **stack_b, t_count *op);
 
 // flags functions
 void	parse_flags(int argc, char **argv, t_config *config);
