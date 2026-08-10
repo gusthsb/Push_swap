@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 {
 	t_list		*stack_a;
 	t_list		*stack_b;
-	t_config	cfg;
+	t_config	config;
 	char		**nums;
 	long		*array;
 	int			size;
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	parse_flags(argc, argv, &cfg);
+	parse_flags(argc, argv, &config);
 	num_count = build_numeric_args(argc, argv, &nums);
 	if (num_count < 0)
 		return (ft_error());
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	free(nums);
 	set_stack_indexes(stack_a);
 	if (size > 1)
-		dispatch_sort(&cfg, &stack_a, &stack_b);
+		dispatch_sort(&config, &stack_a, &stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (0);
