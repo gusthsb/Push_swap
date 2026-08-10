@@ -1,12 +1,12 @@
 #include "ft_push_swap.h"
 
-void	two_sorted(t_list **lst)
+void	two_sorted(t_list **lst, op_count *op)
 {
 	if ((*lst) -> index > (*lst) -> next -> index)
-		swap_a(lst);
+		swap_a(lst, op);
 }
 
-void	three_sorted(t_list **lst)
+void	three_sorted(t_list **lst, op_count *op)
 {
 	int	first;
 	int	second;
@@ -18,20 +18,20 @@ void	three_sorted(t_list **lst)
 	if (first < second && second < third)
 		return ;
 	if (first > second && second < third && first < third)
-		swap_a(lst);
+		swap_a(lst, op);
 	else if (first > second && second < third && first > third)
-		rotate_a(lst);
+		rotate_a(lst, op);
 	else if (first < second && second > third && first > third)
-		reverse_rotate_a(lst);
+		reverse_rotate_a(lst, op);
 	else if (first < second && second > third && first < third)
 	{
-		swap_a(lst);
-		rotate_a(lst);
+		swap_a(lst, op);
+		rotate_a(lst, op);
 	}
 	else if (first > second && second > third)
 	{
-		swap_a(lst);
-		reverse_rotate_a(lst);
+		swap_a(lst, op);
+		reverse_rotate_a(lst, op);
 	}
 }
 
@@ -61,13 +61,13 @@ int	min_position(t_list *lst)
 	return (pos);
 }
 
-void	rotate_to_top(t_list **stack_a, int pos, int size)
+void	rotate_to_top(t_list **stack_a, int pos, int size, op_count *op)
 {
 	if (pos <= size / 2)
 	{
 		while (pos > 0)
 		{
-			rotate_a(stack_a);
+			rotate_a(stack_a, op);
 			pos--;
 		}
 	}
@@ -75,19 +75,19 @@ void	rotate_to_top(t_list **stack_a, int pos, int size)
 	{
 		while (pos < size)
 		{
-			reverse_rotate_a(stack_a);
+			reverse_rotate_a(stack_a, op);
 			pos++;
 		}
 	}
 }
 
-void	min_to_b(t_list **stack_a, t_list **stack_b)
+void	min_to_b(t_list **stack_a, t_list **stack_b, op_count *op)
 {
 	int	pos;
 	int	size;
 
 	size = lst_size(*stack_a);
 	pos = min_position(*stack_a);
-	rotate_to_top(stack_a, pos, size);
-	push_b(stack_b, stack_a);
+	rotate_to_top(stack_a, pos, size, op);
+	push_b(stack_b, stack_a, op);
 }
