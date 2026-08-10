@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/10 16:32:31 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 16:38:33 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	min_to_b(t_list **stack_a, t_list **stack_b, op_count *op);
 void	rotate_to_top(t_list **stack_a, int pos, int size, op_count *op);
 void	two_sorted(t_list **lst, op_count *op);
 void	three_sorted(t_list **lst, op_count *op);
-void	sort_simple(t_list **stack_a, t_list **stack_b);
+void	sort_simple(t_list **stack_a, t_list **stack_b, op_count *op);
 
 // flags functions
 void	parse_flags(int argc, char **argv, t_config *config);
