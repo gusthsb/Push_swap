@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/07 17:35:58 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/10 16:27:00 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ typedef struct s_list
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-void	swap_a(t_list **lst_a);
-void	swap_b(t_list **lst_b);
-void	swap_both(t_list **lst_a, t_list **lst_b);
-void	rotate_a(t_list **lst_a);
-void	rotate_b(t_list **lst_b);
-void	rr(t_list **lst_a, t_list **lst_b);
-void	reverse_rotate_a(t_list **lst_a);
-void	reverse_rotate_b(t_list **lst_b);
-void	rrr(t_list **lst_a, t_list **lst_b);
-void	push_a(t_list **dst_a, t_list **src_b);
-void	push_b(t_list **dst_b, t_list **src_a);
+void	swap_a(t_list **lst_a, op_count *op);
+void	swap_b(t_list **lst_b, op_count *op);
+void	swap_both(t_list **lst_a, t_list **lst_b, op_count *op);
+void	rotate_a(t_list **lst_a, op_count *op);
+void	rotate_b(t_list **lst_b, op_count *op);
+void	rr(t_list **lst_a, t_list **lst_b, op_count *op);
+void	reverse_rotate_a(t_list **lst_a, op_count *op);
+void	reverse_rotate_b(t_list **lst_b, op_count *op);
+void	rrr(t_list **lst_a, t_list **lst_b, op_count *op);
+void	push_a(t_list **dst_a, t_list **src_b, op_count *op);
+void	push_b(t_list **dst_b, t_list **src_a, op_count *op);
 
 // disorder functions
 double main_disorder(t_list *lst);
@@ -93,8 +93,8 @@ void	trans_arr_to_lst(t_list **lst, char **arr);
 int		min_position(t_list *lst);
 void	min_to_b(t_list **stack_a, t_list **stack_b);
 void	rotate_to_top(t_list **stack_a, int pos, int size);
-void	three_sorted(t_list **lst);
-void	two_sorted(t_list **lst);
+void	two_sorted(t_list **lst, op_count *op);
+void	three_sorted(t_list **lst, op_count *op);
 void	sort_simple(t_list **stack_a, t_list **stack_b);
 
 // flags functions
