@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/10 17:48:06 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:16:26 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ static void	dispatch_sort(t_config *config, t_list **stack_a,
 	{
 		sort_simple(stack_a, stack_b, op);
 	}
+	// else if (ft_strcmp(config->strategy, "medium") == 0)
+	// 	sort_medium(stack_a, stack_b, op);
+	// else if (ft_strcmp(config->strategy, "complex") == 0)
+	// 	sort_complex(stack_a, stack_b, op);
+	// else if (ft_strcmp(config->strategy, "adaptive") == 0)
+	// 	return ;
 }
 
 int	main(int argc, char **argv)
