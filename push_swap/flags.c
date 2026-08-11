@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 17:45:26 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/10 17:45:27 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:04:51 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	parse_flags(int argc, char **argv, t_config *config)
 			config -> strategy = "medium";
 		else if (ft_strcmp(argv[i], "--complex") == 0)
 			config -> strategy = "complex";
-		else if (ft_strcmp(argv[i], "adaptive") == 0)
+		else if (ft_strcmp(argv[i], "--adaptive") == 0)
 			config -> strategy = "adaptive";
 		else if (ft_strcmp(argv[i], "--bench") == 0)
 			config -> bench_mode = 1;
