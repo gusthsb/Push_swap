@@ -3,7 +3,7 @@ NAME = push_swap
 SRC = main.c flags.c parsing.c def_index.c disorder.c \
       lst_utils.c push.c reverse.c rotate.c \
       simple_sort.c simple_sort_utils.c swap.c \
-      utils2.c verification_utils.c
+      utils2.c verification_utils.c bench.c
 OBJ = $(SRC:.c=.o)
 
 CC = cc

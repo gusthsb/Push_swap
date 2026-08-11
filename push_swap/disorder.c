@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 17:29:08 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/10 17:39:19 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/11 18:55:13 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	*trans(t_list *lst_en, int *size)
 	}
 	return (new_lst);
 }
-
+#include <stdio.h>
 static double	calculate_disorder(int *lst_a, int size)
 {
 	double	mistakes;

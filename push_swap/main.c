@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/11 17:16:26 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/11 18:55:30 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int	main(int argc, char **argv)
 	free(nums);
 	set_stack_indexes(stack_a);
 	if (size > 1 && !is_sorted(stack_a))
-		dispatch_sort(&config, &stack_a, &stack_b, &op);
+		dispatch_sort(&config, &stack_a, &stack_b, &op);	
+	print_bench(&op, &stack_a);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (0);
