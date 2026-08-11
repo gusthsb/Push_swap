@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/11 18:48:33 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:56:06 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ void	set_stack_indexes(t_list *lst_a);
 t_list	*ft_lstnew(int content);
 int		lst_size(t_list *lst);
 int		is_sorted(t_list *lst);
+int		ft_strcmp(const char *s1, const char *s2);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst);
-int		ft_strcmp(const char *s1, const char *s2);
+void	init_op(t_count *op);
 
 // verifications functions
 int		is_array_duplicate(long	*arr, int size);
