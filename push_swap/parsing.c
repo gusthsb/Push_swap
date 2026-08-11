@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 16:50:34 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/03 20:11:49 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:01:16 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	trans_arr_to_lst(t_list **lst, char **arr)
 	i = 1;
 	while (arr[i])
 	{
-		new_lst = ft_lstnew((int)ft_atol(arr[i])); // ja convertemos aqui e adicionamos na lst
+		new_lst = ft_lstnew((int)ft_atol(arr[i]));
 		if (!new_lst)
-			return;
+			return ;
 		ft_lstadd_back(lst, new_lst);
 		i++;
 	}
