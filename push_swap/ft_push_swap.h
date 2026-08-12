@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "ft_printf/ft_printf.h"
 
 typedef struct s_config
 {
@@ -104,8 +103,11 @@ int		build_numeric_args(int argc, char **argv, char ***out);
 
 // print functions
 void	print_disorder(double disorder);
-void	print_bench(t_count *count);
+void	print_bench(t_list *a, t_config *config, t_count *op);
 void	print_total_ops(t_count *op);
 void	print_strategy(t_config *strategy);
+void	put_nbr_fd(int n);
+void	put_str_fd(char *s);
+void	print_double_2dec(double n);
 
 #endif
