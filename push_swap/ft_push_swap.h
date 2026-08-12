@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/11 20:56:06 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/11 21:09:50 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	reverse_rotate_b(t_list **lst_b, t_count *op);
 void	rrr(t_list **lst_a, t_list **lst_b, t_count *op);
 void	push_a(t_list **dst_a, t_list **src_b, t_count *op);
 void	push_b(t_list **dst_b, t_list **src_a, t_count *op);
-void	print_bench(t_count *count, t_list **stack_a);
 
 // disorder functions
 double	main_disorder(t_list *lst);
@@ -102,5 +101,10 @@ void	sort_simple(t_list **stack_a, t_list **stack_b, t_count *op);
 // flags functions
 void	parse_flags(int argc, char **argv, t_config *config);
 int		build_numeric_args(int argc, char **argv, char ***out);
+
+// print functions
+void	print_disorder(double disorder);
+void	print_bench(t_count *count);
+void	print_total_ops(t_count *op);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 17:23:39 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/11 18:54:29 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/11 21:05:27 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ void	print_total_ops(t_count *op)
 	op->rb, op->rr, op->rra, op->rrb, op->rrr);
 }
 
-void	print_bench(t_count *count, t_list **stack_a)
+void	print_disorder(double disorder)
+{
+	ft_printf("[bench] disorder: %f", disorder);
+}
+
+void	print_bench(t_count *count)
 {
 	print_total_ops(count);
-	ft_printf("[bench] disorder: %f\n", main_disorder(*stack_a));
 }
