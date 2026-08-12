@@ -12,33 +12,67 @@
 
 #include "ft_push_swap.h"
 
-void	print_total_ops(t_count *op)
-{
-	ft_printf("[bench] total_ops: %i\n", op->count);
-	ft_printf("[bench] sa: %i sb: %i ss: %i pa: %i pb: %i\n", op->sa, op->sb
-	, op->ss, op->pa, op->pb);
-	ft_printf("[bench] ra: %i rb: %i rr: %i rra: %i rrb: %i rrr: %i\n", op->ra,
-	op->rb, op->rr, op->rra, op->rrb, op->rrr);
-}
-
-void	print_strategy(t_config *strategy)
-{
-	if (ft_strcmp(strategy->strategy, "--simple") == 0)
-		ft_printf("[bench] strategy: Simple / O(n2)");
-	else if (ft_strcmp(strategy->strategy, "--medium") == 0)
-		ft_printf("[bench] strategy: Medium / O(n√n)");
-	else if (ft_strcmp(strategy->strategy, "--complex") == 0)
-		ft_printf("[bench] strategy: Complex O(n log n)");
-	else if (ft_strcmp(strategy->strategy, "--adaptive") == 0)
-		ft_printf("[bench] strategy: Adaptive");
-}
-
 void	print_disorder(double disorder)
 {
-	ft_printf("[bench] disorder: %f\n", disorder);
+	put_str_fd("[bench] disorder:  ");
+	print_double_2dec(disorder * 100.0);
+	put_str_fd("%\n");
 }
 
-void	print_bench(t_count *count)
+void	print_strategy(t_config *config)
 {
-	print_total_ops(count);
+	put_str_fd("[bench] strategy:  ");
+	put_str_fd(config->strategy);
+	put_str_fd(" / ");
+	if (ft_strcmp(config->strategy, "simple") == 0)
+		put_str_fd("O(n^2)\n");
+	else if (ft_strcmp(config->strategy, "medium") == 0)
+		put_str_fd("O(n√n)\n");
+	else if (ft_strcmp(config->strategy, "complex") == 0)
+		put_str_fd("O(n log n)\n");
+	else
+		put_str_fd("O(n√n)\n");
+}
+
+void	print_total_r_ops(t_count	*op)
+{
+	put_str_fd("[bench] ra: ");
+	put_nbr_fd(op->ra);
+	put_str_fd("  rb: ");
+	put_nbr_fd(op->rb);
+	put_str_fd("  rr: ");
+	put_nbr_fd(op->rr);
+	put_str_fd("  rra: ");
+	put_nbr_fd(op->rra);
+	put_str_fd("  rrb: ");
+	put_nbr_fd(op->rrb);
+	put_str_fd("  rrr: ");
+	put_nbr_fd(op->rrr);
+	put_str_fd("\n");
+}
+
+void	print_total_ops(t_count *op)
+{
+	put_str_fd("[bench] total_ops: ");
+	put_nbr_fd(op->count);
+	put_str_fd("\n");
+	put_str_fd("[bench] sa: ");
+	put_nbr_fd(op->sa);
+	put_str_fd("  sb: ");
+	put_nbr_fd(op->sb);
+	put_str_fd("  ss: ");
+	put_nbr_fd(op->ss);
+	put_str_fd("  pa: ");
+	put_nbr_fd(op->pa);
+	put_str_fd("  pb: ");
+	put_nbr_fd(op->pb);
+	put_str_fd("\n");
+	print_total_r_ops(op);
+}
+
+void	print_bench(t_list *a, t_config *config, t_count *op)
+{
+	print_disorder(main_disorder(a));
+	print_strategy(config);
+	print_total_ops(op);
 }
