@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/11 21:13:45 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/11 21:27:20 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,14 @@ int	main(int argc, char **argv)
 	if (size > 1 && !is_sorted(stack_a))
 	{
 		if (config.bench_mode)
+		{
 			print_disorder(main_disorder(stack_a));
-		dispatch_sort(&config, &stack_a, &stack_b, &op);
-		print_total_ops(&op);	
+			dispatch_sort(&config, &stack_a, &stack_b, &op);
+			print_strategy(&config);
+			print_total_ops(&op);
+		}
+		else
+			dispatch_sort(&config, &stack_a, &stack_b, &op);	
 	}
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);

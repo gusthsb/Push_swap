@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 16:12:54 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/10 17:43:44 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/11 21:32:23 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	swap_a(t_list **lst_a, t_count *op)
 	}
 }
 
-void	swap_b(t_list **lst_b, t_count *op)
+void	swap_b(t_list **lst_b, t_count *op, t_config *bench)
 {
 	if (!lst_b || !*lst_b || (*lst_b)->next == *lst_b)
 		return ;
@@ -56,7 +56,8 @@ void	swap_b(t_list **lst_b, t_count *op)
 		*lst_b = (*lst_b)->next;
 	else
 		do_swap(lst_b);
-	write(1, "sb\n", 3);
+	if (!bench->bench_mode)
+		write(1, "sb\n", 3);
 	if (op)
 	{
 		op->sb++;
