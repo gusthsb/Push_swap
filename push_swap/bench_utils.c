@@ -27,13 +27,16 @@ void	put_nbr_fd(int n)
 
 void	print_double_2dec(double n)
 {
-	int	total;
 	int	whole;
 	int	frac;
 
-	total = (int)(n * 10000 + 0.5);
-	whole = total / 100;
-	frac = total % 100;
+	whole = (int)n;
+	frac = (int)((n - whole) * 100 + 0.5);
+	if (frac >= 100)
+	{
+		frac = 0;
+		whole++;
+	}
 	put_nbr_fd(whole);
 	write(2, ".", 1);
 	if (frac < 10)

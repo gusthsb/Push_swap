@@ -12,66 +12,60 @@
 
 #include "ft_push_swap.h"
 
-static int	*trans(t_list *lst_en, int *size)
+static int	fill_array(t_list *lst, int *arr)
 {
-	int		*new_lst;
-	int		i;
 	t_list	*current;
+	int		i;
 
-	if (!lst_en)
-		return (NULL);
-	*size = lst_size(lst_en);
-	new_lst = malloc(sizeof(int) * (*size));
-	if (!new_lst)
-		return (NULL);
+	current = lst;
 	i = 0;
-	current = lst_en;
-	while (i < *size)
+	while (i < lst_size(lst))
 	{
-		new_lst[i] = current -> content;
-		current = current -> next;
+		arr[i] = current->index;
+		current = current->next;
 		i++;
 	}
-	return (new_lst);
+	return (i);
 }
-#include <stdio.h>
-static double	calculate_disorder(int *lst_a, int size)
+
+static int	count_mistakes(int *arr, int size)
 {
-	double	mistakes;
-	double	total_pairs;
-	int		i;
-	int		j;
+	int	mistakes;
+	int	i;
+	int	j;
 
 	mistakes = 0;
-	total_pairs = 0;
 	i = 0;
 	while (i < size)
 	{
 		j = i + 1;
 		while (j < size)
 		{
-			total_pairs++;
-			if (lst_a[i] > lst_a[j])
+			if (arr[i] > arr[j])
 				mistakes++;
 			j++;
 		}
 		i++;
 	}
-	if (total_pairs == 0)
-		return (0.0);
-	return (mistakes / total_pairs);
+	return (mistakes);
 }
 
 double	main_disorder(t_list *lst)
 {
-	int		*new_arr;
-	double	value;
+	int		*arr;
 	int		size;
+	int		mistakes;
+	int		total_pairs;
 
-	new_arr = trans(lst, &size);
-	if (!new_arr)
+	if (!lst || lst_size(lst) <= 1)
 		return (0.0);
-	value = calculate_disorder(new_arr, lst_size(lst));
-	free(new_arr);
-	return (value);
+	size = lst_size(lst);
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (0.0);
+	fill_array(lst, arr);
+	mistakes = count_mistakes(arr, size);
+	total_pairs = (size * (size - 1)) / 2;
+	free(arr);
+	return ((double)mistakes / (double)total_pairs);
 }
