@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 18:50:21 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/13 17:36:37 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:47:07 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,29 @@ static int	ft_sqrt(int number)
 	return (i - 1);
 }
 
-static int	chunks_b(t_list **stack_a, t_list **stack_b, int size)
+static int	chunks_b(t_list **stack_a, t_list **stack_b,
+				int size, t_count *op)
 {
 	int		chunk_size;
 	int		pushed_b;
-	t_count	op;
-	int		i;
+	int		chunk_end;
 
 	chunk_size = ft_sqrt(size) * 1.5;
 	pushed_b = 0;
-	i = 0;
+	chunk_end = chunk_size - 1;
 	while (*stack_a)
 	{
-		if ((*stack_a)->index <= i++)
+		if ((*stack_a)->index <= chunk_end)
 		{
-			push_b(stack_b, stack_a, &op);
-			rotate_b(stack_b, &op);
+			push_b(stack_b, stack_a, op);
 			pushed_b++;
-		}
-		else if((*stack_a)->index <= i + chunk_size)
-		{
-			push_b(stack_b, stack_a, &op);
-			pushed_b++;
+			if ((*stack_b)->index < chunk_end - (chunk_size / 2))
+				rotate_a(stack_a, op);
 		}
 		else
-			rotate_a(stack_a, &op);
-		if (pushed_b >= i + chunk_size)
-            i += chunk_size;
+			rotate_a(stack_a, op);
+		if (pushed_b > chunk_end && chunk_end < size - 1)
+			chunk_end += chunk_size;
 	}
 	return (pushed_b);
 }
@@ -97,6 +93,6 @@ void sort_medium(t_list **stack_a, t_list **stack_b, t_count *op)
     size = lst_size(*stack_a);
     if (size <= 1)
         return ;
-    chunks_b(stack_a, stack_b, size);
+    chunks_b(stack_a, stack_b, size, op);
     push_back_to_a(stack_a, stack_b, op);
 }
