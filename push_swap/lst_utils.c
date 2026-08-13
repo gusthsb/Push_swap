@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 16:50:41 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/13 16:36:53 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:20:37 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ int	get_max_index_pos(t_list **lst)
 	if (!lst)
 		return (0);
 	max_pos = 0;
+	lst_temp = *lst;
 	max_index = lst_temp->index;
-	lst_temp = lst;
 	current_pos = 0;
 	while (lst_temp != NULL)
 	{

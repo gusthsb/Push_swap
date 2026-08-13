@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/11 21:27:20 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:13:31 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ static void	dispatch_sort(t_config *config, t_list **stack_a,
 {
 	if (ft_strcmp(config -> strategy, "simple") == 0)
 		sort_simple(stack_a, stack_b, op);
+	else if (ft_strcmp(config->strategy, "medium") == 0)
+		sort_medium(stack_a, stack_b, op);
+	else if (ft_strcmp(config->strategy, "complex") == 0)
+		sort_complex(stack_a, stack_b, op);
 	else
 	{
 		sort_simple(stack_a, stack_b, op);
 	}
-	// else if (ft_strcmp(config->strategy, "medium") == 0)
-	// 	sort_medium(stack_a, stack_b, op);
-	// else if (ft_strcmp(config->strategy, "complex") == 0)
-	// 	sort_complex(stack_a, stack_b, op);
 	// else if (ft_strcmp(config->strategy, "adaptive") == 0)
 	// 	return ;
 }
