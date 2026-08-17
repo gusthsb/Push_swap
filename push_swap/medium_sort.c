@@ -42,13 +42,14 @@ static int	chunks_b(t_list **stack_a, t_list **stack_b,
 		{
 			push_b(stack_b, stack_a, op);
 			pushed_b++;
-			if ((*stack_b)->index < chunk_end - (chunk_size / 2))
-				rotate_a(stack_a, op);
+			if (*stack_b && (*stack_b)->index < chunk_end - (chunk_size / 2))
+				rotate_b(stack_b, op);
 		}
 		else
 			rotate_a(stack_a, op);
 		if (pushed_b > chunk_end && chunk_end < size - 1)
 			chunk_end += chunk_size;
+			pushed_b = 0;
 	}
 	return (pushed_b);
 }
