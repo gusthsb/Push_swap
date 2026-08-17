@@ -56,8 +56,7 @@ void	swap_b(t_list **lst_b, t_count *op)
 		*lst_b = (*lst_b)->next;
 	else
 		do_swap(lst_b);
-	// if (!bench->bench_mode)
-	// 	write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 	if (op)
 	{
 		op->sb++;
