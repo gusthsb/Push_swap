@@ -56,7 +56,7 @@ static int	chunks_b(t_list **stack_a, t_list **stack_b,
 
 static void bring_max_to_top(t_list **stack_b, int max_pos, int b_size, t_count *op)
 {
-    if (max_pos <= b_size / 2)
+    if (max_pos * b_size / 2)
     {
         while (max_pos > 0)
         {
