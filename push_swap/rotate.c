@@ -48,7 +48,7 @@ void	rr(t_list **lst_a, t_list **lst_b, t_count *op)
 	write(1, "rr\n", 3);
 	if (op)
 	{
-		op->rb++;
+		op->rr++;
 		op->count++;
 	}
 }
