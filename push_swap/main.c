@@ -44,12 +44,8 @@ static void	dispatch_sort(t_config *config, t_list **stack_a,
 		sort_medium(stack_a, stack_b, op);
 	else if (ft_strcmp(config->strategy, "complex") == 0)
 		sort_complex(stack_a, stack_b, op);
-	else
-	{
+	else if (ft_strcmp(config->strategy, "adaptive") == 0)
 		sort_simple(stack_a, stack_b, op);
-	}
-	// else if (ft_strcmp(config->strategy, "adaptive") == 0)
-	// 	return ;
 }
 
 int	main(int argc, char **argv)
