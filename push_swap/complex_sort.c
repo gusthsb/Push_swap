@@ -31,7 +31,7 @@ void	sort_complex(t_list **stack_a, t_list **stack_b, t_count *op)
 		while (i < size)
 		{
 			if ((((*stack_a)->index >> bit)& 1) == 0)
-				push_b(stack_a, stack_b, op);
+				push_b(stack_b, stack_a, op);
 			else
 				rotate_a(stack_a, op);
 			i++;
