@@ -17,7 +17,7 @@ static int	ft_sqrt(int number)
 	int	i;
 
 	i = 0;
-	while (i * i < number)
+	while (i * i <= number)
 	{
 		if (i * i == number)
 			return (i);
@@ -47,10 +47,11 @@ static int	chunks_b(t_list **stack_a, t_list **stack_b,
 		}
 		else
 			rotate_a(stack_a, op);
-		if (pushed_b > chunk_end && chunk_end < size - 1)
+		if (pushed_b >= chunk_end && chunk_end < size)
 		{
 			chunk_end += chunk_size;
-			pushed_b = 0;
+			if (chunk_end > size)
+				chunk_end = size;
 		}
 	}
 	return (pushed_b);
@@ -58,7 +59,7 @@ static int	chunks_b(t_list **stack_a, t_list **stack_b,
 
 static void bring_max_to_top(t_list **stack_b, int max_pos, int b_size, t_count *op)
 {
-    if (max_pos * b_size / 2)
+    if (max_pos * 2 < b_size)
     {
         while (max_pos > 0)
         {
