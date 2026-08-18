@@ -12,91 +12,100 @@
 
 #include "ft_push_swap.h"
 
+#include "ft_push_swap.h"
+
 static int	ft_sqrt(int number)
 {
 	int	i;
 
 	i = 0;
-	while (i * i <= number)
+	while (i * i < number)
+		i++;
+	return (i);
+}
+
+static void	push_chunk_element(t_list **a, t_list **b, int chunk_end,
+	int mid, t_count *op)
+{
+	if ((*a)->index <= chunk_end)
 	{
-		if (i * i == number)
-			return (i);
+		push_b(b, a, op);
+		if (*b && (*b)->next != *b
+			&& (*b)->index < mid)
+			rotate_b(b, op);
+	}
+	else
+		rotate_a(a, op);
+}
+
+static void	process_chunk(t_list **a, t_list **b, int chunk_end,
+	int mid, int size, t_count *op)
+{
+	int	i;
+
+	i = 0;
+	while (i < size && *a)
+	{
+		push_chunk_element(a, b, chunk_end, mid, op);
 		i++;
 	}
-	return (i - 1);
 }
 
-static int	chunks_b(t_list **stack_a, t_list **stack_b,
-				int size, t_count *op)
+static void	chunks_b(t_list **a, t_list **b, int size, t_count *op)
 {
-	int		chunk_size;
-	int		pushed_b;
-	int		chunk_end;
+	int	chunk_size;
+	int	chunk_end;
+	int	mid;
 
-	chunk_size = ft_sqrt(size) * 1.5;
-	pushed_b = 0;
+	chunk_size = ft_sqrt(size) + ft_sqrt(size) / 2;
 	chunk_end = chunk_size - 1;
-	while (*stack_a)
+	while (*a)
 	{
-		if ((*stack_a)->index <= chunk_end)
-		{
-			push_b(stack_b, stack_a, op);
-			pushed_b++;
-			if (*stack_b && (*stack_b)->index < chunk_end - (chunk_size / 2))
-				rotate_b(stack_b, op);
-		}
-		else
-			rotate_a(stack_a, op);
-		if (pushed_b >= chunk_end && chunk_end < size)
-		{
+		mid = chunk_end - chunk_size / 2;
+		process_chunk(a, b, chunk_end, mid, size, op);
+		if (chunk_end < size - 1)
 			chunk_end += chunk_size;
-			if (chunk_end > size)
-				chunk_end = size;
-		}
+		else
+			chunk_end = size - 1;
 	}
-	return (pushed_b);
 }
 
-static void bring_max_to_top(t_list **stack_b, int max_pos, int b_size, t_count *op)
+static void	bring_max_to_top(t_list **b, int max_pos, int b_size,
+	t_count *op)
 {
-    if (max_pos * 2 < b_size)
-    {
-        while (max_pos > 0)
-        {
-            rotate_b(stack_b, op); 
-            max_pos--;
-        }
-    }
-    else
-    {
-        while (max_pos < b_size)
-        {
-            reverse_rotate_b(stack_b, op);
-            max_pos++;
-        }
-    }
+	if (max_pos <= b_size / 2)
+	{
+		while (max_pos-- > 0)
+			rotate_b(b, op);
+	}
+	else
+	{
+		while (max_pos++ < b_size)
+			reverse_rotate_b(b, op);
+	}
 }
 
-static void	push_back_to_a(t_list **stack_a, t_list **stack_b, t_count *op)
+static void	push_back_to_a(t_list **a, t_list **b, t_count *op)
 {
-    int max_pos;
-    int b_size;
+	int	max_pos;
+	int	b_size;
 
-    while (*stack_b)
-    {
-        b_size = lst_size(*stack_b);
-        max_pos = get_max_index_pos(stack_b);     
-        bring_max_to_top(stack_b, max_pos, b_size, op);
-        push_a(stack_a, stack_b, op);
-    }
+	while (*b)
+	{
+		b_size = lst_size(*b);
+		max_pos = get_max_index_pos(b);
+		bring_max_to_top(b, max_pos, b_size, op);
+		push_a(a, b, op);
+	}
 }
-void sort_medium(t_list **stack_a, t_list **stack_b, t_count *op)
-{
-    int size;
 
-    size = lst_size(*stack_a);
-    if (size <= 1)
-        return ;
-    chunks_b(stack_a, stack_b, size, op);
-    push_back_to_a(stack_a, stack_b, op);
+void	sort_medium(t_list **a, t_list **b, t_count *op)
+{
+	int	size;
+
+	size = lst_size(*a);
+	if (size <= 1)
+		return ;
+	chunks_b(a, b, size, op);
+	push_back_to_a(a, b, op);
 }
