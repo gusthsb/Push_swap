@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/18 19:16:51 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/18 19:38:32 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
+
+typedef struct s_chunk
+{
+	int	chunk_end;
+	int	mid;
+	int	size;
+}	t_chunk;
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -101,7 +108,14 @@ void	sort_simple(t_list **stack_a, t_list **stack_b, t_count *op);
 void	sort_medium(t_list **stack_a, t_list **stack_b, t_count *op);
 void	sort_complex(t_list **stack_a, t_list **stack_b, t_count *op);
 void	sort_adaptive(t_list **stack_a, t_list **stack_b, t_count *op);
-
+int		ft_sqrt(int number);
+void	push_chunk_element(t_list **a, t_list **b, t_chunk *chunk,
+			t_count *op);
+void	process_chunk(t_list **a, t_list **b, t_chunk *chunk,
+			t_count *op);
+void	chunks_b(t_list **a, t_list **b, int size, t_count *op);
+void	bring_max_to_top(t_list **b, int max_pos, int b_size,
+			t_count *op);
 
 // flags functions
 void	parse_flags(int argc, char **argv, t_config *config);

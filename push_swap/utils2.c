@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:08:09 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/11 20:55:41 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/18 19:40:25 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	is_sorted(t_list *lst)
 		return (1);
 	start = lst;
 	current = lst;
-	while (current -> next != start)
+	while (current->next != start)
 	{
-		if (current -> index > current -> next -> index)
+		if (current->index > current->next->index)
 			return (0);
-		current = current -> next;
+		current = current->next;
 	}
 	return (1);
 }
@@ -69,18 +69,18 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-void init_op(t_count *op)
+void	init_op(t_count *op)
 {
-    op->pa = 0;
-    op->pb = 0;
-    op->ra = 0;
-    op->rb = 0;
-    op->rr = 0;
-    op->sa = 0;
-    op->sb = 0;
-    op->ss = 0;
-    op->rra = 0;
-    op->rrb = 0;
-    op->rrr = 0;
-    op->count = 0;
+	op->pa = 0;
+	op->pb = 0;
+	op->ra = 0;
+	op->rb = 0;
+	op->rr = 0;
+	op->sa = 0;
+	op->sb = 0;
+	op->ss = 0;
+	op->rra = 0;
+	op->rrb = 0;
+	op->rrr = 0;
+	op->count = 0;
 }
