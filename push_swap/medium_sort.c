@@ -102,6 +102,7 @@ static void	push_back_to_a(t_list **a, t_list **b, t_count *op)
 void	sort_medium(t_list **a, t_list **b, t_count *op)
 {
 	int	size;
+	fprintf(stderr, "CAIU NO MEDIUM\n");
 
 	size = lst_size(*a);
 	if (size <= 1)

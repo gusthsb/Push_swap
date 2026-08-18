@@ -19,6 +19,7 @@ void	sort_complex(t_list **stack_a, t_list **stack_b, t_count *op)
 	int	bit_size;
 	int	size;
 
+	fprintf(stderr, "CAIU NO COMPLEX\n");
 	i = 0;
 	size = lst_size(*stack_a);
 	while (((size - 1) >> i) != 0)
