@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 16:12:54 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/11 21:39:23 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/18 17:42:54 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	swap_a(t_list **lst_a, t_count *op)
 		*lst_a = (*lst_a)->next;
 	else
 		do_swap(lst_a);
-	write(1, "sa\n", 3);
+	print_operations("sa");
 	if (op)
 	{
 		op -> sa++;
@@ -56,7 +56,7 @@ void	swap_b(t_list **lst_b, t_count *op)
 		*lst_b = (*lst_b)->next;
 	else
 		do_swap(lst_b);
-	write(1, "sb\n", 3);
+	print_operations("sb");
 	if (op)
 	{
 		op->sb++;
@@ -80,7 +80,7 @@ void	swap_both(t_list **lst_a, t_list **lst_b, t_count *op)
 		else
 			do_swap(lst_b);
 	}
-	write(1, "ss\n", 3);
+	print_operations("ss");
 	if (op)
 	{
 		op->ss++;

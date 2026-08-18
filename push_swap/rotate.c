@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 19:44:32 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/10 17:43:49 by mamatos-         ###   ########.fr       */
+/*   Updated: 2026/08/18 17:43:19 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	rotate(t_list **lst)
 void	rotate_a(t_list **lst_a, t_count *op)
 {
 	rotate(lst_a);
-	write(1, "ra\n", 3);
+	print_operations("ra");
 	if (op)
 	{
 		op->ra++;
@@ -33,7 +33,7 @@ void	rotate_a(t_list **lst_a, t_count *op)
 void	rotate_b(t_list **lst_b, t_count *op)
 {
 	rotate(lst_b);
-	write(1, "rb\n", 3);
+	print_operations("rb");
 	if (op)
 	{
 		op->rb++;
@@ -45,7 +45,7 @@ void	rr(t_list **lst_a, t_list **lst_b, t_count *op)
 {
 	rotate(lst_a);
 	rotate(lst_b);
-	write(1, "rr\n", 3);
+	print_operations("rr");
 	if (op)
 	{
 		op->rr++;

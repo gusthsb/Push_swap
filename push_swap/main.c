@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 17:28:37 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/13 17:13:31 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/18 19:14:59 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static void	dispatch_sort(t_config *config, t_list **stack_a,
 	else if (ft_strcmp(config->strategy, "complex") == 0)
 		sort_complex(stack_a, stack_b, op);
 	else if (ft_strcmp(config->strategy, "adaptive") == 0)
-		sort_adaptive(stack_a, stack_b, op);
-	else
 		sort_adaptive(stack_a, stack_b, op);
 }
 
@@ -89,8 +87,8 @@ int	main(int argc, char **argv)
 		if (config.bench_mode)
 		{
 			print_disorder(main_disorder(stack_a));
+			print_strategy(&config, &stack_a);
 			dispatch_sort(&config, &stack_a, &stack_b, &op);
-			print_strategy(&config);
 			print_total_ops(&op);
 		}
 		else

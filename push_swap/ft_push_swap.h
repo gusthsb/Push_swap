@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 17:06:42 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/13 17:12:15 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/18 19:16:51 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,10 @@ int		build_numeric_args(int argc, char **argv, char ***out);
 void	print_disorder(double disorder);
 void	print_bench(t_list *a, t_config *config, t_count *op);
 void	print_total_ops(t_count *op);
-void	print_strategy(t_config *strategy);
+void	print_strategy(t_config *strategy, t_list **stack_a);
 void	put_nbr_fd(int n);
 void	put_str_fd(char *s);
 void	print_double_2dec(double n);
+void	print_operations(char *op);
 
 #endif
