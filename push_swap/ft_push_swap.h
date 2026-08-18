@@ -99,6 +99,7 @@ void	three_sorted(t_list **lst, t_count *op);
 void	sort_simple(t_list **stack_a, t_list **stack_b, t_count *op);
 void	sort_medium(t_list **stack_a, t_list **stack_b, t_count *op);
 void	sort_complex(t_list **stack_a, t_list **stack_b, t_count *op);
+void	sort_adaptive(t_list **stack_a, t_list **stack_b, t_count *op);
 
 
 // flags functions

@@ -4,7 +4,7 @@ SRC = main.c flags.c parsing.c def_index.c disorder.c \
       lst_utils.c push.c reverse.c rotate.c \
       simple_sort.c simple_sort_utils.c swap.c \
       utils2.c verification_utils.c bench.c bench_utils.c \
-	  medium_sort.c complex_sort.c
+	  medium_sort.c complex_sort.c adaptive_sort.c
 
 OBJ = $(SRC:.c=.o)
 

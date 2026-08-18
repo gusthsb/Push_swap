@@ -48,8 +48,10 @@ static int	chunks_b(t_list **stack_a, t_list **stack_b,
 		else
 			rotate_a(stack_a, op);
 		if (pushed_b > chunk_end && chunk_end < size - 1)
+		{
 			chunk_end += chunk_size;
 			pushed_b = 0;
+		}
 	}
 	return (pushed_b);
 }
