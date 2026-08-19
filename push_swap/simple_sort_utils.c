@@ -75,7 +75,7 @@ int	min_position(t_list *lst)
 
 void	rotate_to_top(t_list **stack_a, int pos, int size, t_count *op)
 {
-	if (pos * size / 2)
+	if (pos <= size / 2)
 	{
 		while (pos > 0)
 		{
