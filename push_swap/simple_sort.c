@@ -16,7 +16,6 @@ void	sort_simple(t_list **stack_a, t_list **stack_b, t_count *op)
 {
 	int	size;
 
-	fprintf(stderr, "CAIU NO SIMPLE\n");
 	size = lst_size(*stack_a);
 	if (size == 2)
 		two_sorted(stack_a, op);

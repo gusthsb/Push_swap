@@ -15,9 +15,7 @@
 void	sort_adaptive(t_list **stack_a, t_list **stack_b, t_count *op)
 {
 	double	disorder;
-	int		size;
 
-	size = lst_size(*stack_a);
 	disorder = main_disorder(*stack_a);
 	if (disorder < 0.2)
 		sort_simple(stack_a, stack_b, op);

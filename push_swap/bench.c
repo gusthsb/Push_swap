@@ -19,14 +19,14 @@ void	print_disorder(double disorder)
 	put_str_fd("%\n");
 }
 
-void	print_strategy(t_config *config, t_list **stack_a)
+void	print_strategy(t_config *config)
 {
 	double	disorder;
 
 	put_str_fd("[bench] strategy:  ");
 	put_str_fd(config->strategy);
 	put_str_fd(" / ");
-	disorder = main_disorder(*stack_a);
+	disorder = config->initial_disorder;
 	if (disorder < 0.2 && ft_strcmp(config->strategy, "adaptive") == 0)
 		put_str_fd("O(n^2)\n");
 	else if (disorder < 0.5 && ft_strcmp(config->strategy, "adaptive") == 0)
@@ -80,6 +80,6 @@ void	print_total_ops(t_count *op)
 void	print_bench(t_list *a, t_config *config, t_count *op)
 {
 	print_disorder(main_disorder(a));
-	print_strategy(config, &a);
+	print_strategy(config);
 	print_total_ops(op);
 }

@@ -22,6 +22,7 @@ typedef struct s_config
 {
 	int		bench_mode;
 	char	*strategy;
+	double	initial_disorder;
 }			t_config;
 
 typedef struct s_op
@@ -85,6 +86,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst);
 void	init_op(t_count *op);
 int		get_max_index_pos(t_list **lst);
+void	cleanup(t_list **stack_a, t_list **stack_b);
+int		should_sort(t_list *stack_a);
+void	handle_output(t_config *config, t_count *op);
 
 // verifications functions
 int		is_array_duplicate(long	*arr, int size);
@@ -125,7 +129,7 @@ int		build_numeric_args(int argc, char **argv, char ***out);
 void	print_disorder(double disorder);
 void	print_bench(t_list *a, t_config *config, t_count *op);
 void	print_total_ops(t_count *op);
-void	print_strategy(t_config *strategy, t_list **stack_a);
+void	print_strategy(t_config *strategy);
 void	put_nbr_fd(int n);
 void	put_str_fd(char *s);
 void	print_double_2dec(double n);
