@@ -6,13 +6,13 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 20:12:02 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/07 16:32:43 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/20 23:47:34 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	is_array_duplicate(long	*arr, int size)
+int	is_array_duplicate(long *arr, int size)
 {
 	int	i;
 	int	j;
@@ -49,15 +49,23 @@ int	is_inter(char *str)
 {
 	int	i;
 
-	if (str[0] == '\0')
-		return (0);
 	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (str[i] == '\0')
 		return (0);
 	while (str[i])
 	{
+		if (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		{
+			while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+				i++;
+			if (str[i] == '\0')
+				return (1);
+			return (0);
+		}
 		if (ft_isdigit(str[i]) == 0)
 			return (0);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 19:35:50 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/18 19:38:48 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/20 23:13:44 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	process_chunk(t_list **a, t_list **b, t_chunk *chunk,
 		t_count *op)
 {
 	int	i;
+	int	current_a_size;
 
 	i = 0;
-	while (i < chunk->size && *a)
+	current_a_size = lst_size(*a);
+	while (i < current_a_size && *a)
 	{
 		push_chunk_element(a, b, chunk, op);
 		i++;

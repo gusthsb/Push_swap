@@ -6,7 +6,7 @@
 /*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 18:50:21 by mamatos-          #+#    #+#             */
-/*   Updated: 2026/08/18 19:38:49 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/20 23:29:29 by gustde-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	sort_medium(t_list **a, t_list **b, t_count *op)
 	int	size;
 
 	size = lst_size(*a);
+	if (size <= 5)
+	{
+		sort_simple(a, b, op);
+		return ;
+	}
 	if (size <= 1)
 		return ;
 	chunks_b(a, b, size, op);

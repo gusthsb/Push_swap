@@ -1,22 +1,20 @@
-## Autors
-
-*This activity has been created as part of the 42 curriculum by gustde-s, mamatos-*
-
 # Push_swap
+
+*This project has been created as part of the 42 curriculum by gustde-s, mamatos-*
 
 ## Description
 
-Push_swap is a 42 School algorithmic project focused on sorting data using two stacks (A and B) with a limited set of operations. The goal is to sort a stack of integers in ascending order with the minimum number of operations possible.
+Push_swap is a 42 School algorithmic complexity project that challenges you to sort a stack of integers using only two stacks (A and B) and a limited set of operations. The core objective is to generate the **smallest possible sequence of operations** that sorts the input in ascending order.
 
-This implementation goes beyond the basic requirements by providing **multiple sorting strategies** that can be selected via command-line flags, a **benchmark mode** for performance analysis, and an **adaptive strategy** that automatically chooses the best algorithm based on the input's disorder level.
-
-The project uses a **circular doubly-linked list** as the underlying data structure for both stacks, allowing efficient rotation and manipulation operations.
+This implementation goes beyond basic requirements by featuring:
+- **Four distinct sorting strategies** with different algorithmic complexities (O(n²), O(n√n), O(n log n), and adaptive)
+- **Automatic strategy selection** based on input disorder level
+- **Benchmark mode** with detailed performance metrics
+- **Circular doubly-linked list** data structure for efficient stack manipulation
 
 ## Instructions
 
 ### Compilation
-
-The project includes a Makefile with the standard rules:
 
 ```bash
 make        # Compile the project
@@ -25,102 +23,238 @@ make fclean # Remove object files and executable
 make re     # Recompile from scratch
 ```
 
-The Makefile compiles with `-Wall -Wextra -Werror` flags and does not relink.
+**Compilation flags**: `-Wall -Wextra -Werror` (enforced by 42 Norm)
 
 ### Execution
 
+#### Basic Usage
+
 ```bash
-# Basic usage (defaults to adaptive strategy)
+# Default behavior (uses adaptive strategy)
 ./push_swap 5 4 3 2 1
 
-# Select a specific strategy
-./push_swap --simple 5 4 3 2 1
-./push_swap --medium 5 4 3 2 1
-./push_swap --complex 5 4 3 2 1
-./push_swap --adaptive 5 4 3 2 1
+# Force a specific strategy
+./push_swap --simple 5 4 3 2 1      # O(n²)
+./push_swap --medium 5 4 3 2 1      # O(n√n)
+./push_swap --complex 5 4 3 2 1     # O(n log n)
+./push_swap --adaptive 5 4 3 2 1    # Automatic selection (default)
 
-# Benchmark mode (prints statistics to stderr)
-./push_swap --bench --simple 5 4 3 2 1
-./push_swap --bench --complex 5 4 3 2 1
-
-# Verify correctness with the checker
-ARG="5 4 3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
-
-# Test with random numbers
-ARG=$(shuf -i 1-500 -n 100); ./push_swap $ARG | ./checker_linux $ARG
+# No arguments → exit silently
+./push_swap
 ```
 
-### Available Flags
+#### Benchmark Mode
 
-| Flag | Description |
-|------|-------------|
-| `--simple` | Uses O(n²) selection sort approach |
-| `--medium` | Uses O(n√n) chunk-based sort approach |
-| `--complex` | Uses O(n log n) radix sort approach |
-| `--adaptive` | Automatically selects strategy based on input disorder (default) |
-| `--bench` | Enables benchmark mode, printing statistics to stderr |
+```bash
+# Enable benchmark output to stderr (operations still on stdout)
+./push_swap --bench --simple 5 4 3 2 1
+./push_swap --bench --complex 100 numbers...
+
+# View only benchmark metrics (redirect stdout to dev/null)
+./push_swap --bench --adaptive $ARG > /dev/null 2>&1
+```
+
+#### Verification and Testing
+
+```bash
+# Verify with the provided checker
+ARG="5 4 3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
+
+# Test with randomly generated numbers
+ARG=$(shuf -i 1-500 -n 100); ./push_swap $ARG | ./checker_linux $ARG
+
+# Pipe benchmark to checker while saving metrics
+ARG="4 67 3 87 23"; ./push_swap --bench --complex $ARG 2> bench.txt | ./checker_linux $ARG
+```
+
+### Command-Line Flags
+
+| Flag | Behavior |
+|------|----------|
+| `--simple` | Forces O(n²) selection sort strategy |
+| `--medium` | Forces O(n√n) chunk-based strategy |
+| `--complex` | Forces O(n log n) radix sort strategy |
+| `--adaptive` | Auto-selects strategy based on disorder (default if no flag) |
+| `--bench` | Enables benchmark mode; outputs statistics to stderr |
+
+### Benchmark Output Example
+
+```
+[bench] disorder: 42.56%
+[bench] strategy: Adaptive / O(n√n)
+[bench] total_ops: 847
+[bench] sa: 0 sb: 0 ss: 0 pa: 400 pb: 400
+[bench] ra: 23 rb: 15 rr: 9 rra: 0 rrb: 0 rrr: 0
+```
 
 ### Error Handling
 
-The program handles the following error cases:
-- Non-numeric parameters → prints `Error\n` to stderr
-- Duplicate numeric parameters → prints `Error\n` to stderr
-- Values outside INT range → prints `Error\n` to stderr
-- No parameters → exits silently with code 0
+The program displays `Error` to stderr and exits for:
+- Non-integer arguments (e.g., `"abc"`)
+- Integers outside the `int` range (< -2,147,483,648 or > 2,147,483,647)
+- Duplicate values in the input
+- Malformed input
 
-## Resources
+## Technical Details
 
-### Documentation and References
-- [42 School - Push_swap Subject](https://github.com/42School)
-- [Stack Operations - Wikipedia](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
-- [Radix Sort Algorithm](https://en.wikipedia.org/wiki/Radix_sort)
-- [Selection Sort Algorithm](https://en.wikipedia.org/wiki/Selection_sort)
-- [Circular Linked List - GeeksforGeeks](https://www.geeksforgeeks.org/circular-linked-list/)
-- [Push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
+### Data Structure
 
-### Use of AI
-AI tools (ChatGPT/Claude) were used during this project for the following tasks:
-- **Brainstorming and algorithm design**: Exploring different sorting strategies and their trade-offs
-- **Code review and debugging**: Identifying edge cases and potential memory leaks
-- **Documentation**: Structuring the README and explaining algorithmic concepts
-- **Performance optimization**: Suggestions for reducing operation counts
+**Circular Doubly-Linked List** is used for both stacks:
+- Each node stores: `value`, `index`, and pointers (`next`, `prev`)
+- Enables O(1) rotations in both directions
+- Index assignment maps values to ranks (0 to n-1), essential for radix sort
 
-All final code was written, tested, and understood by both team members. AI was used as a learning aid, not as a code generator.
+### Operations
+
+The following 11 operations are available (in the Push_swap language):
+
+| Operation | Effect |
+|-----------|--------|
+| `sa` | Swap first 2 elements of stack A |
+| `sb` | Swap first 2 elements of stack B |
+| `ss` | Execute `sa` and `sb` simultaneously |
+| `pa` | Push top of B to top of A |
+| `pb` | Push top of A to top of B |
+| `ra` | Rotate A upward (top → bottom) |
+| `rb` | Rotate B upward (top → bottom) |
+| `rr` | Execute `ra` and `rb` simultaneously |
+| `rra` | Rotate A downward (bottom → top) |
+| `rrb` | Rotate B downward (bottom → top) |
+| `rrr` | Execute `rra` and `rrb` simultaneously |
+
+### Disorder Metric
+
+**Disorder** is a value between 0.0 and 1.0 that measures how unsorted the input is:
+
+```
+disorder = (number of inversions) / (total possible pairs)
+         = (pairs where a[i] > a[j] and i < j) / (n × (n-1) / 2)
+```
+
+- Perfectly sorted array: disorder = 0.0
+- Reverse-sorted array: disorder = 1.0 (100% inverted)
+- Disorder is computed **before any operations** begin
 
 ## Algorithm Justification
 
-### Simple Strategy — O(n²) Selection Sort
+### 1. Simple Strategy — O(n²) Selection Sort Adaptation
 
-**Approach**: Repeatedly finds the minimum element in stack A, rotates it to the top, and pushes it to stack B. After all elements are in B, pushes them back to A.
+**How it works:**
+- Find minimum element in stack A using comparisons (by index)
+- Rotate it to the top
+- Push to stack B
+- Repeat until A is empty
+- Push all elements back from B to A (now sorted)
 
-**Justification**: For very small inputs (n ≤ 5), the overhead of more complex algorithms is not worth it. Selection sort is simple, predictable, and easy to reason about. It performs well for nearly-sorted or very small datasets where the quadratic complexity is not a bottleneck.
+**Complexity Analysis:**
+- Finding min: O(n)
+- Rotating to top: O(n) rotations in worst case
+- Total: n iterations × O(n) per iteration = **O(n²) operations**
 
-**When to use**: Low disorder inputs (disorder < 20%), small datasets.
+**Why this strategy?**
+- Extremely simple logic, easy to verify correctness
+- Nearly-sorted inputs require very few operations
+- Minimal overhead for small datasets
 
-### Medium Strategy — O(n√n) Chunk Sort
+**Threshold:** disorder < 20% (input is already mostly sorted)
 
-**Approach**: Divides the input into chunks of size approximately √n. Elements are pushed to stack B in chunk order, with smaller elements rotated to the bottom of B for easier retrieval. Then elements are pushed back to A in descending order.
+**Example performance:**
+- 5 numbers: ~15 operations
+- 100 numbers (low disorder): ~1500 operations
 
-**Justification**: This strategy bridges the gap between simple and complex approaches. By dividing the problem into manageable chunks, it reduces the number of operations compared to pure selection sort while avoiding the bit-manipulation overhead of radix sort. The chunk size √n was chosen as it provides a good balance between the number of chunks and the size of each chunk.
+### 2. Medium Strategy — O(n√n) Chunk-Based Sorting
 
-**When to use**: Medium disorder inputs (20% ≤ disorder < 50%).
+**How it works:**
+1. Calculate chunk size: `k = √n` (e.g., √100 = 10)
+2. Divide range into chunks: [0..k-1], [k..2k-1], ..., [(√n-1)k..n-1]
+3. Push elements in chunk order to B, rotating smaller elements down for efficient access
+4. Push all elements back to A in reverse order of chunks
 
-### Complex Strategy — O(n log n) Radix Sort
+**Complexity Analysis:**
+- √n chunks, each containing ~√n elements
+- Processing each chunk: O(n) rotations over √n chunks
+- Total: **O(n√n) operations**
 
-**Approach**: Uses the binary representation of element indexes. For each bit position (from LSB to MSB), elements with bit 0 are pushed to B, elements with bit 1 stay in A (rotated). After processing each bit, all elements are pushed back to A. This is a classic LSD (Least Significant Digit) radix sort adapted for stack operations.
+**Why this strategy?**
+- Significantly fewer operations than simple sort for moderately chaotic inputs
+- Avoids expensive bit-manipulation of radix sort
+- √n scaling provides smooth performance transition
 
-**Justification**: Radix sort provides the best asymptotic complexity for large datasets. Since we can only compare and move elements between two stacks, the bit-based approach allows us to sort without explicit pairwise comparisons during the main loop. The number of passes is log₂(max_index), making it very efficient for 500 elements.
+**Threshold:** 20% ≤ disorder < 50% (moderately unsorted)
 
-**When to use**: High disorder inputs (disorder ≥ 50%), large datasets.
+**Example performance:**
+- 100 numbers (medium disorder): ~800 operations
+- 500 numbers (medium disorder): ~7000 operations
 
-### Adaptive Strategy
+### 3. Complex Strategy — O(n log n) Radix Sort (LSD)
 
-**Approach**: Calculates the input's disorder percentage (ratio of inversions to total possible pairs) and selects the most appropriate strategy:
-- **Disorder < 20%** → Simple (O(n²))
-- **20% ≤ Disorder < 50%** → Medium (O(n√n))
-- **Disorder ≥ 50%** → Complex (O(n log n))
+**How it works:**
+1. Map values to indices (ranks 0 to n-1) for bit operations
+2. For each bit position (LSB to MSB, total log₂(n-1) bits):
+   - Partition: elements with bit=0 go to B, bit=1 stay in A
+   - Rotate A back to original relative order
+3. After all bits processed, A contains sorted elements
 
-**Justification**: No single algorithm is optimal for all inputs. By measuring the disorder level beforehand, we can choose the strategy that will likely produce the fewest operations for that specific input. This hybrid approach maximizes performance across the entire spectrum of possible inputs.
+**Complexity Analysis:**
+- log₂(n) passes through the array
+- Per pass: O(n) push/rotate operations
+- Total: **O(n log n) operations**
 
-**Disorder Calculation**: The disorder is computed as the ratio of inversions (pairs where i < j but a[i] > a[j]) to the total number of possible pairs (n*(n-1)/2). A perfectly sorted array has 0% disorder; a reverse-sorted array has 100% disorder.
+**Why this strategy?**
+- Best asymptotic complexity for large, highly unsorted inputs
+- Index-based (not value-based), so works with any integer range
+- Radix sort is deterministic: no randomness, consistent operation count
 
+**Threshold:** disorder ≥ 50% (highly chaotic input)
+
+**Example performance:**
+- 100 numbers (high disorder): ~700 operations
+- 500 numbers (high disorder): ~5500 operations
+
+### 4. Adaptive Strategy — Hybrid Approach
+
+**How it works:**
+1. Measure disorder of input **before sorting begins**
+2. Select optimal strategy based on disorder thresholds:
+   - **disorder < 20%** → Simple (O(n²))
+   - **20% ≤ disorder < 50%** → Medium (O(n√n))
+   - **disorder ≥ 50%** → Complex (O(n log n))
+3. Execute selected strategy
+
+**Threshold Justification:**
+- **20%:** Empirically, selection sort outperforms radix sort for low chaos
+- **50%:** Radix sort becomes superior for truly random or reverse-ordered inputs
+
+**Why adaptive?**
+- No single algorithm dominates all input patterns
+- By analyzing disorder first, we choose the algorithm most likely to minimize operation count
+- Provides near-optimal performance across the entire input spectrum
+
+
+*All benchmarks are verified using the provided `checker_linux` binary during evaluation.*
+
+## Resources
+
+### Documentation & References
+
+- [42 School Push_swap Subject]
+- [Radix Sort — Brilliant.org](https://brilliant.org/wiki/radix-sort/)
+- [Selection Sort — Wikipedia](https://en.wikipedia.org/wiki/Selection_sort)
+- [Linked Lists — GeeksforGeeks](https://www.geeksforgeeks.org/linked-list-set-1-introduction/)
+- [Sorting Algorithm Visualizer](https://github.com/AlgoVisualizer/AlgoVisualizer)
+
+### Use of AI in This Project
+
+AI tools (Claude/Gemini) were used for:
+
+- **Algorithm exploration**: Comparing radix sort, merge sort, and chunk-based approaches
+- **Debugging**: Identifying edge cases in chunk sorting and rotation logic in general
+- **Documentation**: Helping to struct the README
+- **Code review**: Memory leak detection
+
+**Important note**: All code was written, tested, and thoroughly understood by both team members. AI was used as a learning assistant and brainstorming tool, not as a code generator. Every algorithm was manually implemented and tested against edge cases.
+
+## Team Contributions
+
+- **gustde-s**: Algorithm implementation (simple, medium), debugging, testing), Data structure design, benchmark mode, documentation
+- **mamatos-**: Algorithm implementation (simple, radix sort), disorder calculate, print operations, utils for the functions
