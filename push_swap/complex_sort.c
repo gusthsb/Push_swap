@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustde-s <gustde-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamatos- <mamatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 17:04:14 by gustde-s          #+#    #+#             */
-/*   Updated: 2026/08/18 19:42:33 by gustde-s         ###   ########.fr       */
+/*   Updated: 2026/08/20 23:48:52 by mamatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+
+static int	count_bits(int size)
+{
+	int	i;
+
+	i = 0;
+	while (((size - 1) >> i) != 0)
+		i++;
+	return (i);
+}
 
 void	sort_complex(t_list **stack_a, t_list **stack_b, t_count *op)
 {
@@ -19,11 +29,10 @@ void	sort_complex(t_list **stack_a, t_list **stack_b, t_count *op)
 	int	bit_size;
 	int	size;
 
-	i = 0;
 	size = lst_size(*stack_a);
-	while (((size - 1) >> i) != 0)
-		i++;
-	bit_size = i;
+	if (size <= 5)
+		return (sort_simple(stack_a, stack_b, op));
+	bit_size = count_bits(size);
 	bit = 0;
 	while (bit < bit_size)
 	{
